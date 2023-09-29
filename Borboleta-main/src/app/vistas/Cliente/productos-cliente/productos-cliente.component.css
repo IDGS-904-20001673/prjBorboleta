@@ -1,0 +1,14 @@
+.styled-div {
+    padding-top: 4rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Agrega otros estilos según sea necesario */
+  }
+
+  .styled-div-inner {
+    background-color: #ffedcc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  

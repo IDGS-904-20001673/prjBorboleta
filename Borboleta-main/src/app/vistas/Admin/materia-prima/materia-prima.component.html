@@ -1,0 +1,172 @@
+<app-header-adm>
+  <!-- Tenemos que usar el div con la clase main-content para que se inserte dentro del topbar y el sidebar-->
+  <div class="container-fluid main-content">
+    <!-- inicio de todo el contenido de proveedores-->
+    <div class="card shadow mb-4" *ngIf="divVisibleAgregar">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Agregar Materia Prima</h6>
+      </div>
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-center">
+          <div class="form-row">
+            <form class="row login_form" (submit)="onRegisterMateriaPrima()">
+              <div class="form-group col-md-4">
+                <label for="nombrePro">Nombre Materia de la Prima:</label>
+                <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre"
+                  placeholder="Nombre Materia de la Prima" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" />
+              </div>
+              <div class="form-group col-md-4">
+                <label for="telPro">Costo de la materia prima:($MXN)</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="text" class="form-control" id="costo" [(ngModel)]="costo" name="costo"
+                    placeholder="Costo" required oninput="this.value=this.value.replace(/[^0-9.]/g, '')" />
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="selectProveedor">Seleccionar Proveedor:</label>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="selectProveedorDropdown"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ getProveedorNombre(selectedProveedor) || 'Seleccione un proveedor' }}
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="selectProveedorDropdown">
+                    <a class="dropdown-item" *ngFor="let proveedor of proveedores"
+                      (click)="selectProveedor(proveedor.idProveedor)">{{ proveedor.nombre }}</a>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="imagen">Imagen:</label>
+                <input type="file" class="form-control-file" id="imagen" (change)="onImageSelected($event)"
+                  accept="image/*">
+              </div>
+              <div class="col-md-12 form-group">
+                <button type="submit" class="primary-btn">Registrar Materia Prima</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Materia prima por puntos-->
+    <section>
+      <div class="card shadow mb-4" *ngIf="divVisibleAgregar">
+        <a href="#collapseCardExample2" class="d-block card-header py-3" data-toggle="collapse" role="button"
+          aria-expanded="false" aria-controls="collapseCardExample2">
+          <h6 class="m-0 font-weight-bold text-primary">
+            Materia Prima Por Puntos
+          </h6>
+        </a>
+        <div class="collapse hide" id="collapseCardExample2">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-center">
+              <div class="form-row">
+                <form class="row login_form" (submit)="onRegisterMateriaPrimaMP()">
+                  <div class="form-group col-md-4">
+                    <label for="nombrePro">Nombre Materia de la Prima:</label>
+                    <input type="text" class="form-control" id="nombreMP" [(ngModel)]="nombreMP" name="nombreMP"
+                      placeholder="Nombre Materia de la Prima"  oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')"/>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="nombrePro">Punto (MX):</label>
+                    <input type="text" class="form-control" id="punto" [(ngModel)]="puntoMP" name="punto"
+                      placeholder="Punto"  oninput="this.value=this.value.replace(/[^0-9.]/g, '')"/>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="telPro">Costo de la materia prima:($MXN)</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                      </div>
+                      <input type="text" class="form-control" id="costoMP" [(ngModel)]="costoMP" name="costoMP"
+                        placeholder="Costo" required oninput="this.value=this.value.replace(/[^0-9.]/g, '')" />
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="selectProveedor">Seleccionar Proveedor:</label>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="selectProveedorDropdown"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ getProveedorNombre(selectedProveedorinMP) || 'Seleccione un proveedor' }}
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="selectProveedorDropdown">
+                        <a class="dropdown-item" *ngFor="let proveedor of proveedores"
+                          (click)="selectedProveedorMP(proveedor.idProveedor)">{{ proveedor.nombre }}</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="imagen">Imagen:</label>
+                    <input type="file" class="form-control-file" id="imagen" (change)="onImageSelected($event)"
+                      accept="image/*">
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <button type="submit" class="primary-btn">Registrar Materia Prima Por Puntos</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- div para edicion -->
+    <div *ngIf="divVisibleComprar" >
+      <!-- Contenido del div -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Comprar Materia Prima</h6>
+        </div>
+        <div class="card-body">
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="form-row">
+              <form class="row login_form">
+                <div class="form-group col-md-6">
+                  <label for="nombrePro">Nombre Materia de la Prima:</label>
+                  <input type="text" class="form-control" id="nombre"
+                    placeholder="Nombre Materia de la Prima"  readonly
+                    [value]="selectedMatPrima?.nombreMateriaPrima"/>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="telPro">Costo de la materia prima:($MXN)</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" class="form-control" id="costo" 
+                           placeholder="Costo" readonly [value]="selectedMatPrima?.costo"/>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="cantidadCompra">Cantidad a comprar:</label>
+                  <input type="text" class="form-control" id="nombre" [(ngModel)]="cantidadCompra" name="cantidadCompra"
+                         placeholder="Cantidad a comprar" 
+                         oninput="this.value=this.value.replace(/[^0-9.]/g, '')"
+                         (ngModelChange)="calcularCostoTotal()" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="pagoTotal">Costo total de la compra:($MXN)</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" class="form-control" id="costo" [(ngModel)]="pagoTotal" name="pagoTotal"
+                           placeholder="Costo Total" readonly/>
+                  </div>
+                </div>                
+                <div class="col-md-12 form-group">
+                  <button type="submit" (click)="onCompraMateriaPrima()" class="primary-btn">Comprar Materia Prima</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--fin div-->
+    <!-- fin de todo el contenido de proveedores-->
+  </div>
+</app-header-adm>

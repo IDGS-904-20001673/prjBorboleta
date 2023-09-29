@@ -1,0 +1,58 @@
+<app-header-adm>
+  <!-- Tenemos que usar el div con la clase main-content para que se inserte dentro del topbar y el sidebar-->
+  <div class="container-fluid main-content">
+    <!-- inicio de todo el contenido de proveedores-->
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Agregar Proveedores</h6>
+      </div>
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-center">
+          <div class="form-row">
+            <form class="row login_form" (submit)="onRegisterProovedor()">
+              <div class="form-group col-md-6">
+                <label for="nombrePro">Nombre Proveedor:</label>
+                <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre" placeholder="Nombre del Proveedor" required/>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="telPro">No. teléfono:</label>
+                <input type="text" class="form-control" id="telefono" [(ngModel)]="telefono" name="telefono" placeholder="No. teléfono" required/>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="estado" [(ngModel)]="estado" name="estado" placeholder="Estado" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="municipio" [(ngModel)]="municipio" name="municipio" placeholder="Municipio" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="codigoPostal" [(ngModel)]="codigoPostal" name="codigoPostal" placeholder="Código Postal" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="colonia" [(ngModel)]="colonia" name="colonia" placeholder="Colonia" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="calle" [(ngModel)]="calle" name="calle" placeholder="Calle" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="number" class="form-control" id="numeroExt" [(ngModel)]="numeroExt" name="numeroExt" placeholder="Número Exterior" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="numeroInt" [(ngModel)]="numeroInt" name="numeroInt" placeholder="Número Interior (Opcional)" >
+              </div>
+              <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="referencia" [(ngModel)]="referencia" name="referencia" placeholder="Referencia" required>
+              </div>
+              <div class="col-md-12 form-group">
+                <button type="submit" class="primary-btn">Registrar Proveedor</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  
+    <!-- fin de todo el contenido de proveedores-->
+  </div>
+</app-header-adm>

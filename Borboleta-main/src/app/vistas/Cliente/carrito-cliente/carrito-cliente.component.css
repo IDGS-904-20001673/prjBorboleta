@@ -1,0 +1,59 @@
+/* Estilo para el input de cantidad */
+.quantity-input {
+    border: none;
+    background: transparent;
+    width: 40px;
+    text-align: center;
+    font-size: 14px;
+    padding: 0;
+}
+
+/* Estilo para los elementos de la lista de productos */
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* Estilo para el costo y el total */
+.cost,
+.total {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+/* Estilo para la tabla */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Estilo para las celdas de la tabla */
+.table td,
+.table th {
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Estilo para las celdas de la tabla en dispositivos pequeños */
+@media (max-width: 767px) {
+    .table td,
+    .table th {
+        text-align: left;
+    }
+}
+
+/* Estilo para el subtotal, shipping y total */
+.subtotal-total {
+    margin-top: 20px;
+}
+
+/* Estilo para el botón de proceder a Paypal */
+.primary-btn {
+    display: block;
+    margin-top: 20px;
+}
+
+

@@ -1,0 +1,46 @@
+<app-header></app-header>
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Productos en venta!</h1>
+                <nav class="d-flex align-items-center">
+                    <a routerLink="/home">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a routerLink="/productosCliente">Shop<span class="lnr lnr-arrow-right"></span></a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section>
+<div class="container-fluid styled-div">
+    <div class="row">
+      <div class="col-lg-4 col-md-6" *ngFor="let producto of productos">
+        <div class="">
+          <div class="single-product">
+            <img class="img-fluid" [src]="'../../../../assets/img/fotosGuardadas/' + producto.image_name" alt="Imagen" width="10" height="10">
+            <div class="product-details">
+              <h6>{{ producto.nombre }}</h6>
+              <div class="price">
+                <h6>${{ producto.precio.toFixed(2) }}</h6>
+              </div>
+              <p>{{ producto.descripccion }}</p>
+              <div class="prd-bottom">
+                <a (click)="mostrarDetalleProducto(producto.idProducto)" class="social-info">
+                  <span class="ti-bag"></span>
+                  <p class="hover-text">add to bag</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+
+<app-footer></app-footer>

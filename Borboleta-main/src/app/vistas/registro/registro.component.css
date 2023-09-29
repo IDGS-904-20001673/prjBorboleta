@@ -1,0 +1,7 @@
+input:required:invalid {
+    border-color: red;
+  }
+  
+  input:required:valid {
+    border-color: initial; /* O el color de borde normal que desees */
+  }

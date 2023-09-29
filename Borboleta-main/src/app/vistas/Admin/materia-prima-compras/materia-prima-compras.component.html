@@ -1,0 +1,104 @@
+<app-header-adm>
+    <!-- Tenemos que usar el div con la clase main-content para que se inserte dentro del topbar y el sidebar-->
+    <div class="container-fluid main-content">
+        <!-- inicio de todo el contenido de proveedores-->
+        <div>
+            <!-- Contenido del div -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Comprar Materia Prima</h6>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <div class="form-row">
+                            <form class="row login_form">
+                                <div class="form-group col-md-6">
+                                    <label for="nombrePro">Nombre Materia de la Prima:</label>
+                                    <input type="text" class="form-control" id="nombre"
+                                        placeholder="Nombre Materia de la Prima" readonly
+                                        [value]="selectedMatPrima?.nombreMateriaPrima" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="telPro">Costo de la materia prima:($MXN)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="costo" placeholder="Costo" readonly
+                                            [value]="selectedMatPrima?.costo" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="cantidadCompra">Cantidad a comprar:</label>
+                                    <input type="text" class="form-control" id="nombre" [(ngModel)]="cantidadCompra"
+                                        name="cantidadCompra" placeholder="Cantidad a comprar"
+                                        oninput="this.value=this.value.replace(/[^0-9.]/g, '')"
+                                        (ngModelChange)="calcularCostoTotal()" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="pagoTotal">Costo total de la compra:($MXN)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="costo" [(ngModel)]="pagoTotal"
+                                            name="pagoTotal" placeholder="Costo Total" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <button type="submit" (click)="onCompraMateriaPrima()" class="primary-btn">Comprar
+                                        Materia Prima</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card shadow mb-4">
+            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
+                aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Materia Prima
+                </h6>
+            </a>
+            <div class="collapse show" id="collapseCardExample">
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Existencia (Unidades o metros)</th>
+                                <th>Costo $MXN (Unidades o metros)</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let matPrimaP of matPrimaP">
+                                <td>
+                                    <img [src]="'../../../../assets/img/fotosGuardadas/' + matPrimaP.image_name"
+                                        alt="Imagen" width="50" height="50">
+                                </td>
+                                <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">{{
+                                    matPrimaP.nombreMateriaPrima }}</td>
+                                <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">{{
+                                    matPrimaP.cantidadTotal }}</td>
+                                <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">${{
+                                    matPrimaP.costo }}</td>
+                                <td>
+                                    <button class="btn btn-danger" (click)="toggleDiv(matPrimaP)">
+                                        <i class="fas fa-power-off"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- fin de todo el contenido de proveedores-->
+    </div>
+</app-header-adm>
