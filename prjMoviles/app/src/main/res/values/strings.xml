@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Borboleta Shoes</string>
+    <string name="title_activity_acciones">Acciones</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">MIHO</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="shr_hint_username">Usuario</string>
+    <string name="shr_hint_pass">Contraseña</string>
+
+    <string name="menu_salidas">Solicitud de Materiales</string>
+    <string name="solicitudes">Mi Inventario</string>
+    <string name="historial">Historial de Solicitudes</string>
+    <string name="detalle">Detalle de la Solicitud</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+</resources>
