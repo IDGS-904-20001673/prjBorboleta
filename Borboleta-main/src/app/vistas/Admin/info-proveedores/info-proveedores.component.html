@@ -24,10 +24,12 @@
                                 <td>{{ proveedor.nombre }}</td>
                                 <td>{{ proveedor.telefono }}</td>
                                 <td>
-                                    <button (click)="cambiarEstatusProveedor(proveedor.idProveedor)"
-                                        class="btn btn-danger">
+                                    <button  (click)="cambiarEstatusProveedor(proveedor.idProveedor)"
+                                    
+                                        class="btn btn-danger" style="margin: 10px">
                                         <i class="fas fa-power-off"></i>
                                     </button>
+
                                     <button class="btn btn-info" routerLink="/descripcionProveedores" (click)="mostrarinfo(proveedor)">
                                         <i class="fas fa-info-circle"></i>
                                       </button>

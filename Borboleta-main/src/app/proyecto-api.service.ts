@@ -20,12 +20,13 @@ export class ProyectoApiService {
   
 
   constructor(private http: HttpClient) { }
-
+  
   /* ---------------------------------------------------------------------LOGIN--------------------------------------------------------*/
-  private apiUrlLogin = 'https://localhost:7109/tenis/login';
-  private apiUrlRegistro = 'https://localhost:7109/tenis/Registrase'; 
-  private apiUrlDomicilio = 'https://localhost:7109/tenis/ConsultarDomicilioPorIdUsuario'
-  private apiUrlUpdateDomicilio = 'https://localhost:7109/tenis/ActualizarUsuario';
+  private  urlPadre = 'http://192.168.1.11:7109/tenis'
+  private apiUrlLogin = this.urlPadre + '/login';
+  private apiUrlRegistro = this.urlPadre + '/Registrase'; 
+  private apiUrlDomicilio = this.urlPadre + '/ConsultarDomicilioPorIdUsuario'
+  private apiUrlUpdateDomicilio = this.urlPadre + '/ActualizarUsuario';
   
 
   login(email: string, password: string): Observable<any> {
@@ -78,10 +79,10 @@ export class ProyectoApiService {
 
   /* ------------------------------------------------------------------Proveedores--------------------------------------------------------*/
 
-  private apiUrlProveedores = 'https://localhost:7109/tenis/MostrarProveedoresActivos'; 
-  private apiUrlCambiarEstatus = 'https://localhost:7109/tenis/CambiarEstatusProveedor';
-  private apiUrlRegistrarProveedor = 'https://localhost:7109/tenis/RegistrarProvedor';
-  private apiUrlProveedoresInAct = 'https://localhost:7109/tenis/MostrarProveedoresInActivos';
+  private apiUrlProveedores = this.urlPadre + '/MostrarProveedoresActivos'; 
+  private apiUrlCambiarEstatus = this.urlPadre + '/CambiarEstatusProveedor';
+  private apiUrlRegistrarProveedor = this.urlPadre + '/RegistrarProvedor';
+  private apiUrlProveedoresInAct = this.urlPadre + '/MostrarProveedoresInActivos';
 
 
 
@@ -123,13 +124,13 @@ export class ProyectoApiService {
 
   /* -----------------------------------------------------------Materia Prima--------------------------------------------------------*/
 
-  private apiUrlRegistrarMateriaPrima = 'https://localhost:7109/tenis/NuevaMateriaPrima';
-  private apiUrlMostrarMateriaPrima = 'https://localhost:7109/tenis/MostrarMateriaPrimaNormal'; 
-  private apiUrlObtenerMateriaPrimaCompleta = 'https://localhost:7109/tenis/MostrarMateriaPrima';
-  private apiUrlComprarMateriaPrima = 'https://localhost:7109/tenis/ComprarMateriaPrima'; 
-  private apiUrlMostrarMateriaPrimaPuntos ='https://localhost:7109/tenis/MostrarMateriaPrimaPuntos';
-  private apiUrlComprarMateriaPrimaPuntos = 'https://localhost:7109/tenis/ComprarMateriaPrimaPorPuntos';
-  private apiUrlgetAllComprasMP = 'https://localhost:7109/tenis/MostrarComprasMateriaPrima';
+  private apiUrlRegistrarMateriaPrima = this.urlPadre + '/NuevaMateriaPrima';
+  private apiUrlMostrarMateriaPrima = this.urlPadre + '/MostrarMateriaPrimaNormal'; 
+  private apiUrlObtenerMateriaPrimaCompleta = this.urlPadre + '/MostrarMateriaPrima';
+  private apiUrlComprarMateriaPrima = this.urlPadre + '/ComprarMateriaPrima'; 
+  private apiUrlMostrarMateriaPrimaPuntos =this.urlPadre + '/MostrarMateriaPrimaPuntos';
+  private apiUrlComprarMateriaPrimaPuntos = this.urlPadre + '/ComprarMateriaPrimaPorPuntos';
+  private apiUrlgetAllComprasMP = this.urlPadre + '/MostrarComprasMateriaPrima';
 
 
   onRegisterMateriaPrima(data: any): Observable<any>{
@@ -199,14 +200,14 @@ export class ProyectoApiService {
   /* -----------------------------------------------------------Productos--------------------------------------------------------*/
 
 
-  private apiUrlgetallProductos = 'https://localhost:7109/tenis/MostrarProductosActivos';
-  private apiUrlgetallProductosInActivos = 'https://localhost:7109/tenis/MostrarProductosInactivos'; 
-  private apiUrlCambiarEstatusProducto = 'https://localhost:7109/tenis/CambiarEstatusProducto';
-  private apiUrlRegistrarNuevoProducto = 'https://localhost:7109/tenis/NuevoProducto';
-  private apiUrlRegistrarPuntoProducto = 'https://localhost:7109/tenis/RegistrarPuntosProducto';
-  private apiUrlIdProductoDetalle = 'https://localhost:7109/tenis/MostrarDetalleProductoPorId';
-  private apiUrlRegistrarMateriaPrimaProducto = 'https://localhost:7109/tenis/RegistrarDetalleMateriaProductoPuntos';
-  private apiUrlHacerProducto = 'https://localhost:7109/tenis/HacerProductos';
+  private apiUrlgetallProductos =this.urlPadre +  '/MostrarProductosActivos';
+  private apiUrlgetallProductosInActivos =this.urlPadre +  '/MostrarProductosInactivos'; 
+  private apiUrlCambiarEstatusProducto =this.urlPadre +  '/CambiarEstatusProducto';
+  private apiUrlRegistrarNuevoProducto =this.urlPadre +  '/NuevoProducto';
+  private apiUrlRegistrarPuntoProducto =this.urlPadre +  '/RegistrarPuntosProducto';
+  private apiUrlIdProductoDetalle =this.urlPadre +  '/MostrarDetalleProductoPorId';
+  private apiUrlRegistrarMateriaPrimaProducto =this.urlPadre +  '/RegistrarDetalleMateriaProductoPuntos';
+  private apiUrlHacerProducto =this.urlPadre +  '/HacerProductos';
   getAllProductosActivos(): Observable<productos[]> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -291,7 +292,7 @@ export class ProyectoApiService {
   }
 
   //productos clientes------------------------------------------------------------------------------------------------------------
-  private apiUrlMostrarDetalleMateriaPrimaProductoPorPunto = 'https://localhost:7109/tenis/MostrarDetalleMateriaProductoPorPunto';
+  private apiUrlMostrarDetalleMateriaPrimaProductoPorPunto = this.urlPadre + '/MostrarDetalleMateriaProductoPorPunto';
 
   MostrarDetalleMateriaPrimaProductoPorPunto(data: any): Observable<MateriaPrimaDetalle>{
     console.log('esto lleva data de la api',data);

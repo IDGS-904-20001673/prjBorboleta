@@ -1,0 +1,5 @@
+.bg-borboleta {
+    background-color: rgba(255, 128, 0, 0.7); /* Color naranja opaco (ajusta el último valor para cambiar la opacidad) */
+    /* O puedes usar solo el color naranja sólido sin opacidad: background-color: #FF8000; */
+    background-size: cover;
+  }
