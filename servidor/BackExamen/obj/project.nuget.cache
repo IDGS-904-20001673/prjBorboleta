@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "arrK+IcVP4Skkyn7cwfGF2pmraeveqjzQxnEK9jEhNWE8gV+OjhdId8TAsWqz2OZCchO1sitpOxWYsQVB6thjA==",
+  "dgSpecHash": "zIDqyzaTZ6ZyzqIckR+AEoPw3+WH358LZc9wRWQNmRpe0Q4JXePVfAe4mopflMSSyuVkNiX/kfLDTnvGAUZNkw==",
   "success": true,
-  "projectFilePath": "C:\\Integradora10mo\\servidor\\BackExamen\\tenis.csproj",
+  "projectFilePath": "C:\\TODOPROYECTO\\prjBorboleta\\servidor\\BackExamen\\tenis.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nesto\\.nuget\\packages\\microsoft.aspnet.cors\\5.2.9\\microsoft.aspnet.cors.5.2.9.nupkg.sha512",
     "C:\\Users\\nesto\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",

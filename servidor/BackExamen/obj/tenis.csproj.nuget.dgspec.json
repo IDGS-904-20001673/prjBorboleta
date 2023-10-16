@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Integradora10mo\\servidor\\BackExamen\\tenis.csproj": {}
+    "C:\\TODOPROYECTO\\prjBorboleta\\servidor\\BackExamen\\tenis.csproj": {}
   },
   "projects": {
-    "C:\\Integradora10mo\\servidor\\BackExamen\\tenis.csproj": {
+    "C:\\TODOPROYECTO\\prjBorboleta\\servidor\\BackExamen\\tenis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Integradora10mo\\servidor\\BackExamen\\tenis.csproj",
+        "projectUniqueName": "C:\\TODOPROYECTO\\prjBorboleta\\servidor\\BackExamen\\tenis.csproj",
         "projectName": "tenis",
-        "projectPath": "C:\\Integradora10mo\\servidor\\BackExamen\\tenis.csproj",
+        "projectPath": "C:\\TODOPROYECTO\\prjBorboleta\\servidor\\BackExamen\\tenis.csproj",
         "packagesPath": "C:\\Users\\nesto\\.nuget\\packages\\",
-        "outputPath": "C:\\Integradora10mo\\servidor\\BackExamen\\obj\\",
+        "outputPath": "C:\\TODOPROYECTO\\prjBorboleta\\servidor\\BackExamen\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nesto\\AppData\\Roaming\\NuGet\\NuGet.Config",

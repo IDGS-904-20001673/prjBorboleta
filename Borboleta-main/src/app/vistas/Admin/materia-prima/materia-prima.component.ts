@@ -3,6 +3,7 @@ import { ProyectoApiService } from '../../../proyecto-api.service';
 import { Proveedor } from '../../../models/modelo-general.model';
 import { materiaPrima } from '../../../models/modelo-general.model';
 import { materiaPrimaPuntos } from '../../../models/modelo-general.model';
+
 import Swal from 'sweetalert2';
 
 
@@ -96,7 +97,6 @@ export class MateriaPrimaComponent implements OnInit {
       }
     }
   }
-  
 
   calcularCostoTotal(): void {
     if (this.cantidadCompra !== null && this.selectedMatPrima !== null && this.selectedMatPrima.costo !== null) {
@@ -202,19 +202,47 @@ export class MateriaPrimaComponent implements OnInit {
   }
 
 
-
-  onRegisterMateriaPrima(): void{
+  onRegisterMateriaPrima(): void {
     if (!this.isFormValid()) {
-      Swal.fire('Formulario incompleto', 'llena todos los campos para continuar', 'error');
+      Swal.fire('Formulario incompleto', 'Llena todos los campos para continuar', 'error');
       return;
     }
-    const data = {
-      provedoresId: this.selectedProveedor,
-      nombreMateriaPrima: this.nombre,
-      costo: this.costo,
-      image_name: this.image_name
+  
+    const handleImageConversion = () => {
+      return new Promise<string>((resolve, reject) => {
+        if (!this.selectedImage) {
+          resolve(this.image_name);
+        } else {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const base64Image = reader.result?.toString().split(',')[1] || '';
+            resolve(base64Image);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(this.selectedImage);
+        }
+      });
     };
-    console.log(data);
+  
+    handleImageConversion()
+      .then((base64Image: string) => {
+        const data = {
+          provedoresId: this.selectedProveedor,
+          nombreMateriaPrima: this.nombre,
+          costo: this.costo,
+          image_name: base64Image
+        };
+  
+        console.log('Datos con imagen en base64:', data);
+        this.showConfirmationDialog(data);
+      })
+      .catch(error => {
+        console.error('Error al convertir la imagen a base64:', error);
+        Swal.fire('Error', 'Error al convertir la imagen a base64', 'error');
+      });
+  }
+  
+  private showConfirmationDialog(data: any): void {
     // Mostrar SweetAlert de confirmación
     Swal.fire({
       title: '¿Quieres agregar la materia prima?',
@@ -226,16 +254,15 @@ export class MateriaPrimaComponent implements OnInit {
       if (result.isConfirmed) {
         this.proyectoApiService.onRegisterMateriaPrima(data).subscribe(
           (response) => {
-            if(response.statusCode == 200){
-              console.log('este es el response',response)
-            Swal.fire('¡Registro exitoso!', '', 'success').then((result) => {
-              window.location.reload();
-            });;
-            }else if (response.statusCode == 500){
-              console.log('este es el response',response)
+            if (response.statusCode === 200) {
+              console.log('Este es el response', response);
+              Swal.fire('¡Registro exitoso!', '', 'success').then((result) => {
+                window.location.reload();
+              });
+            } else if (response.statusCode === 500) {
+              console.log('Este es el response', response);
               Swal.fire('¡Error en el servidor!', '', 'error');
             }
-            
           },
           (error) => {
             console.error('Error al registrar la materia prima', error);
@@ -245,6 +272,51 @@ export class MateriaPrimaComponent implements OnInit {
       }
     });
   }
+  
+
+  
+  // onRegisterMateriaPrima(): void{
+  //   if (!this.isFormValid()) {
+  //     Swal.fire('Formulario incompleto', 'llena todos los campos para continuar', 'error');
+  //     return;
+  //   }
+  //   const data = {
+  //     provedoresId: this.selectedProveedor,
+  //     nombreMateriaPrima: this.nombre,
+  //     costo: this.costo,
+  //     image_name: this.image_name
+  //   };
+  //   console.log(data);
+  //   // Mostrar SweetAlert de confirmación
+  //   Swal.fire({
+  //     title: '¿Quieres agregar la materia prima?',
+  //     icon: 'question',
+  //     showCancelButton: true,
+  //     confirmButtonText: 'Sí',
+  //     cancelButtonText: 'No'
+  //   }).then((result: any) => {
+  //     if (result.isConfirmed) {
+  //       this.proyectoApiService.onRegisterMateriaPrima(data).subscribe(
+  //         (response) => {
+  //           if(response.statusCode == 200){
+  //             console.log('este es el response',response)
+  //           Swal.fire('¡Registro exitoso!', '', 'success').then((result) => {
+  //             window.location.reload();
+  //           });;
+  //           }else if (response.statusCode == 500){
+  //             console.log('este es el response',response)
+  //             Swal.fire('¡Error en el servidor!', '', 'error');
+  //           }
+            
+  //         },
+  //         (error) => {
+  //           console.error('Error al registrar la materia prima', error);
+  //           Swal.fire('¡Registro fallido!', '', 'error');
+  //         }
+  //       );
+  //     }
+  //   });
+  // }
 
   onCompraMateriaPrima(): void{
     if (!this.isFormValidCompra()) {
