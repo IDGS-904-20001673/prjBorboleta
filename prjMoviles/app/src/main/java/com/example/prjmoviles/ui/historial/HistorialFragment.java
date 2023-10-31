@@ -1,4 +1,4 @@
-package com.example.prjmoviles.ui.slideshow;
+package com.example.prjmoviles.ui.historial;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.prjmoviles.databinding.FragmentSlideshowBinding;
+import com.example.prjmoviles.databinding.FragmentHistorialBinding;
 
-public class SlideshowFragment extends Fragment {
+public class HistorialFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentHistorialBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        HistorialViewModel slideshowViewModel =
+                new ViewModelProvider(this).get(HistorialViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentHistorialBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textSlideshow;

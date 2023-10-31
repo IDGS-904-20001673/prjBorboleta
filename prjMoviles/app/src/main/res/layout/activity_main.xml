@@ -31,11 +31,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passEdit"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginEnd="10dp"
         android:hint="@string/shr_hint_pass"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,8 +48,8 @@
 
             android:id="@+id/txtPassword"
             android:layout_width="match_parent"
-            android:drawableLeft="@drawable/candado"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/candado"
             android:inputType="textPassword"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -77,16 +77,15 @@
             android:drawableLeft="@drawable/user"
             android:inputType="text"
 
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColor="#FF9800" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
 
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="403dp"
-        android:layout_height="253dp"
+        android:layout_width="426dp"
+        android:layout_height="259dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -97,6 +96,7 @@
         android:layout_width="0dp"
         android:layout_height="214dp"
         android:layout_marginTop="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +105,7 @@
 
     <TextView
         android:id="@+id/textNombreDelUsuario"
-        android:layout_width="410dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:background="#FF8C00"
         android:text="BORBOLETA"

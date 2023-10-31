@@ -8,7 +8,8 @@
     <style name="Theme.PrjMoviles" parent="Base.Theme.PrjMoviles" />
 
     <style name="Theme.PrjMoviles.NoActionBar">
-        <item name="windowActionBar">false</item>
+        <item name="android:statusBarColor">@color/Naranja</item>
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
     </style>
 

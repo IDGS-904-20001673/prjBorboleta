@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_settings"
+        android:icon="@drawable/carrito1"
+        android:iconTint="#000000"
         android:orderInCategory="100"
-        android:title="Miho App"
-        app:showAsAction="never" />
+        android:title="Carro"
+        app:showAsAction="always" />
+
 </menu>

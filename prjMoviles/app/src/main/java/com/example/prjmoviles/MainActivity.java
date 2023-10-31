@@ -32,6 +32,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import com.example.prjmoviles.constantes.UI;
+import com.example.prjmoviles.db.Usuario;
 import com.example.prjmoviles.model.UsuarioModelo;
 import com.example.prjmoviles.utils.ApiBodyService;
 import com.example.prjmoviles.utils.Constants;
@@ -78,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 }else if (txtUserSession.getText().length() == 0) {
                     user.setError("Este campo esta vacio");
                 }else {
-                    iniciarSesion(txtUserSession.getText().toString(), txtPasswordSession.getText().toString());
+
+                  iniciarSesion(txtUserSession.getText().toString(), txtPasswordSession.getText().toString());
                 }
             }
         });
@@ -128,13 +130,19 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.dismiss();
 
                 try {
+                    int idUsuario=0;
+                    String nombre="";
+                    String contrasenia="";
                     if (response.length() > 0) {
-                        Toast.makeText(MainActivity.this, "chido", Toast.LENGTH_SHORT).show();
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject jsonObject = response.getJSONObject(i);
-                            int idUsuario = jsonObject.getInt("idUsuario");
-                            String nombre = jsonObject.getString("nombre");
+                            idUsuario = jsonObject.getInt("idUsuario");
+                            nombre = jsonObject.getString("nombre");
+                            contrasenia = jsonObject.getString("contrasenia");
+
                         }
+                        Usuario userC = new Usuario(MainActivity.this);
+                        userC.insertUsuario(idUsuario,nombre,contrasenia, getApplicationContext());
                         pantalla();
                     } else {
                         password.setError("Contraseña Incorrecta");

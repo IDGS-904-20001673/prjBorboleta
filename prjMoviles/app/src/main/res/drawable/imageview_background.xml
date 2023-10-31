@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+        <item>
+            <shape android:shape="rectangle">
+                <solid android:color="#FFFFFF" /> <!-- Fondo blanco -->
+                <corners android:radius="16dp" /> <!-- Bordes redondeados (ajusta según tus preferencias) -->
+            </shape>
+        </item>
+        <item android:right="8dp" android:left="8dp" android:top="8dp" android:bottom="8dp">
+            <shape android:shape="rectangle">
+                <solid android:color="#22000000" /> <!-- Color de sombra semitransparente -->
+                <corners android:radius="16dp" /> <!-- Bordes redondeados para la sombra (ajusta según tus preferencias) -->
+            </shape>
+        </item>
+    </layer-list>
+
+</selector>
