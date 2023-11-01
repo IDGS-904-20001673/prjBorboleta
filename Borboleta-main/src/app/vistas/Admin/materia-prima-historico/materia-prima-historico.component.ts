@@ -13,7 +13,8 @@ import Swal from 'sweetalert2';
 export class MateriaPrimaHistoricoComponent implements OnInit {
   constructor(private proyectoApiService: ProyectoApiService) {}
   compras: comprasMP[] = [];
-  
+  filtro :string = '' 
+  productosFiltrados: comprasMP[] = [];
   ngOnInit(): void {
     this.obtenerMateriaPrima();
   }
@@ -22,11 +23,36 @@ export class MateriaPrimaHistoricoComponent implements OnInit {
     this.proyectoApiService.getAllComprasMP().subscribe(
       (data) => {
         this.compras = data;
+        this.productosFiltrados = data;
       },
       (error) => {
         console.error('Error al obtener la materia prima', error);
       }
     );
   }
+  dataURLtoImage(dataURL: string): string {
+    return 'data:image/jpeg;base64,' + dataURL;
+  }
+  filtrarHistorico():void{
+    if(this.filtro){
+      this.productosFiltrados = this.compras.filter((compras) =>{
+        return(
+          compras.materiaPrima.nombreMateriaPrima.toLowerCase().includes(this.filtro.toLowerCase())||
+          compras.cantidadCompra.toString().includes(this.filtro) ||
+          compras.pagoTotal.toString().includes(this.filtro) ||
+          compras.fecha.toString().includes(this.filtro) 
+        );
+      });
+
+    }else{
+      this.productosFiltrados=[...this.compras];
+    }
+
+    if (this.filtro === '') {
+      // Si el campo de búsqueda está vacío, recargar la página
+      window.location.reload();
+    }
+  }
+
 
 }

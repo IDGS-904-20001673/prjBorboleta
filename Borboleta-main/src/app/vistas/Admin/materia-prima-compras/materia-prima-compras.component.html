@@ -79,8 +79,7 @@
                         <tbody>
                             <tr *ngFor="let matPrimaP of matPrimaP">
                                 <td>
-                                    <img [src]="'../../../../assets/img/fotosGuardadas/' + matPrimaP.image_name"
-                                        alt="Imagen" width="50" height="50">
+                                    <img [src]="dataURLtoImage(matPrimaP.image_name)" alt="Imagen" width="50" height="50">
                                 </td>
                                 <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">{{
                                     matPrimaP.nombreMateriaPrima }}</td>

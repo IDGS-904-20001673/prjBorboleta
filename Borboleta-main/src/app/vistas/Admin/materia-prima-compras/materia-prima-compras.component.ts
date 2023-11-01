@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { ProyectoApiService } from '../../../proyecto-api.service';
-import { Proveedor } from '../../../models/modelo-general.model';
+import { Proveedor, productos } from '../../../models/modelo-general.model';
 import { materiaPrima } from '../../../models/modelo-general.model';
 import { agregarMateriaPrima } from '../../../models/modelo-general.model';
 import Swal from 'sweetalert2';
@@ -30,6 +30,10 @@ export class MateriaPrimaComprasComponent implements OnInit{
   puntoMP: string = '';
   selectedProveedorinMP: number = 0;
   delMp: string = ' del ';
+
+  materiPrimaFiltrada : materiaPrima[]=[];
+  filtro:string = '';
+
 
   ngOnInit(): void {
     this.obtenerProveedores();
@@ -129,17 +133,32 @@ export class MateriaPrimaComprasComponent implements OnInit{
       }
     );
   }
-
+  
+  dataURLtoImage(dataURL: string): string {
+    return 'data:image/jpeg;base64,' + dataURL;
+  }
   obtenerMateriaPrima(): void {
     this.proyectoApiService.getAllMateriaPrima().subscribe(
       (data) => {
         this.matPrima = data;
+        this.materiPrimaFiltrada = data;
       },
       (error) => {
         console.error('Error al obtener la materia prima', error);
       }
     );
   }
+
+  
+
+
+
+
+
+
+
+
+
 
   obtenerMateriaPrimaPuntos(): void {
     this.proyectoApiService.getAllMateriaPrimaCompleta().subscribe(

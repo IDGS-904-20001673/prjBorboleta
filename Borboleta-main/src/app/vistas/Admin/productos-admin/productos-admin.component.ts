@@ -26,13 +26,15 @@ export class ProductosAdminComponent implements OnInit {
 
   //filtro de la tabla 
   filtro: string = '';
+  filtro2: string = '';
   productosFiltrados: productos[] = [];
-
+  productosFiltradosInactivos: productos[]=[];
 
 
 
   productos: productos[] = [];
   productosInActivos: productos[] = [];
+  
   //agregar productos
   nombre: string = '';
   precio: number | null = null;
@@ -346,28 +348,51 @@ export class ProductosAdminComponent implements OnInit {
       this.productosFiltrados = [...this.productos];
     }
   
-    if (this.filtro === '') {
-      // Si el campo de búsqueda está vacío, recargar la página
-      window.location.reload();
-    }
+    // if (this.filtro === '') {
+    //   // Si el campo de búsqueda está vacío, recargar la página
+    //   window.location.reload();
+    // }
   }
   
-  
-
-
-
-
   obtenerProductosInActivos(): void {
     this.proyectoApiService.getAllProductosInActivos().subscribe(
       (data) => {
         this.productosInActivos = data;
+        this.productosFiltradosInactivos = data;
         console.log(data);
       },
       (error) => {
         console.error('Error al obtener los proveedores', error);
       }
     );
+  } 
+
+  filtrarProductosIn(): void {
+    if (this.filtro2) {
+      this.productosFiltradosInactivos = this.productosInActivos.filter((producto) => {
+        return (
+          producto.nombre.toLowerCase().includes(this.filtro2.toLowerCase()) ||
+          producto.precio.toString().includes(this.filtro2) ||
+          producto.descripccion.toLowerCase().includes(this.filtro2.toLowerCase())
+        );
+      });
+    } else {
+      this.productosFiltradosInactivos = [...this.productos];
+    }
+  
+    // if (this.filtro2 === '') {
+    //   // Si el campo de búsqueda está vacío, recargar la página
+    //   window.location.reload();
+    // }
   }
+
+  dataURLtoImage(dataURL: string): string {
+    return 'data:image/jpeg;base64,' + dataURL;
+  }
+  
+
+
+
 
   cambiarEstatusProducto(idProducto: number, estatus: number): void {
     const data = {

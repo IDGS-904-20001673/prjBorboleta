@@ -122,7 +122,7 @@
       <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
         aria-expanded="true" aria-controls="collapseCardExample">
         <h6 class="m-0 font-weight-bold text-primary">
-          Productos
+          Productos Activos
         </h6>
       </a>
       <div class="collapse show" id="collapseCardExample">
@@ -142,7 +142,9 @@
               <tbody>
                 <tr *ngFor="let producto of productosFiltrados">
                   <td>
-                    <img [src]="'../../../../assets/img/fotosGuardadas/' + producto.image_name" alt="Imagen" width="50" height="50">
+                   
+                    <img [src]="dataURLtoImage(producto.image_name)" alt="Imagen" width="50" height="50">
+
                   </td>
                   <td>{{ producto.nombre }}</td>
                   <td>${{ producto.precio }}</td>
@@ -222,11 +224,12 @@
       <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
         aria-expanded="true" aria-controls="collapseCardExample">
         <h6 class="m-0 font-weight-bold text-primary">
-          Productos
+          Productos Inactivos
         </h6>
       </a>
       <div class="collapse show" id="collapseCardExample">
         <div class="card-body">
+          <input type="text" [(ngModel)]="filtro2" (input)="filtrarProductosIn()" placeholder="Buscar..." class="form-control mb-3">
           <table class="table table-bordered table-striped">
             <thead class="thead-dark">
               <tr>
@@ -238,7 +241,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let productosInActivos of productosInActivos">
+              <tr *ngFor="let productosInActivos of productosFiltradosInactivos">
                 <td>
                   <img [src]="'../../../../assets/img/fotosGuardadas/' + productosInActivos.image_name" alt="Imagen"
                     width="50" height="50">
@@ -254,6 +257,9 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div *ngIf="productosFiltradosInactivos.length === 0">
+          <p>No se encontraron coincidencias.</p>
         </div>
       </div>
     </div>
