@@ -22,7 +22,7 @@ export class ProyectoApiService {
   constructor(private http: HttpClient) { }
   
   /* ---------------------------------------------------------------------LOGIN--------------------------------------------------------*/
-  private  urlPadre = 'http://192.168.1.11:7109/tenis'
+  private  urlPadre = 'http://192.168.1.8:7109/tenis'
   private apiUrlLogin = this.urlPadre + '/login';
   private apiUrlRegistro = this.urlPadre + '/Registrase'; 
   private apiUrlDomicilio = this.urlPadre + '/ConsultarDomicilioPorIdUsuario'

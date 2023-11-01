@@ -13,41 +13,39 @@
         <hr class="sidebar-divider my-0" />
 
         <!-- Nav Item - Dashboard -->
-        <!-- <li class="nav-item active">
-            <a class="nav-link" href="index.html">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li> -->
+    
 
         <!-- Divider -->
-        <hr class="sidebar-divider"  />
+        <hr class="sidebar-divider" />
 
         <!-- Heading -->
-        <div class="sidebar-heading" style="font-size: larger; color: azure;">Interface</div>
+        <div class="sidebar-heading"><span style="font-size: 24px; color: #000;">Interface</span></div>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item" *ngIf="idRole === 1">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProveedores"
                 aria-expanded="true" aria-controls="collapseProveedores">
                 <i class="fas fa-fw fa-truck"></i>
-                <span style="font-size: larger; color: azure;"> Proveedores</span>
+                <span>Proveedores</span>
             </a>
             <div id="collapseProveedores" class="collapse" aria-labelledby="headingProveedores"
                 data-parent="#accordionSidebar">
-                <div class="bg-light py-2 collapse-inner rounded">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Paginas Proveedores:</h6>
                     <a class="collapse-item" routerLink="/proovedores">Registrar Proveedores</a>
                     <a class="collapse-item" routerLink="/infoProveedores">Ver los Proveedores</a>
                 </div>
             </div>
         </li>
-        <!-- Nav Item - Utilities Collapse Menu -->
+     
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMateriaPrima"
                 aria-expanded="true" aria-controls="collapseMateriaPrima">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span style="font-size: larger;">Materia Prima</span>
+                <span>Materia Prima</span>
             </a>
-            <div id="collapseMateriaPrima" class="collapse" aria-labelledby="headingMateriaPrima" data-parent="#accordionSidebar">
+            <div id="collapseMateriaPrima" class="collapse" aria-labelledby="headingMateriaPrima"
+                data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Paginas Materia Prima:</h6>
                     <a class="collapse-item" routerLink="/materiaPrima">Agregar Materia Prima</a>
@@ -56,14 +54,13 @@
                 </div>
             </div>
         </li>
-        
-         <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" routerLink="/productosAdmin">
                 <i class="fas fa-shopping-basket"></i>
               <span>Productos</span>
-            </a> 
+            </a>
         </li>
-         <!-- Divider   -->
+        <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block" />
     </ul>
     <!-- End of Sidebar -->
@@ -87,7 +84,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 large">{{ Nombre }}</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Nombre }}</span>
                             <img class="img-profile rounded-circle" src="../../../../assets/img/undraw_profile.svg" />
                         </a>
                         <!-- Dropdown - User Information -->

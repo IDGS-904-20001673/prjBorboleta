@@ -38,5 +38,23 @@ export class HeaderComponent {
   }
   redirectToHome() {
     this.router.navigate(['/home']);
+   
   }
+  realizarAccion() {
+    setTimeout(() => {
+      window.location.reload();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 50);
+  
+  }
+  scrollEspecifico(){
+    setTimeout(() => {
+    window.location.reload();
+    const destino = document.getElementById('puntero');
+    const posiciondestino = destino ? destino.offsetTop:0;
+    window.scrollTo({top:posiciondestino,behavior:'smooth'});
+  }, 50);
+  
+}
+ 
 }

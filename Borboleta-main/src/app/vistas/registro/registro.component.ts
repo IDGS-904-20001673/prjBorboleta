@@ -91,4 +91,12 @@ export class RegistroComponent {
       );
     }
   }
+  scrollEspecifico(){
+    setTimeout(() => {
+    window.location.reload();
+  
+  }, 50);
+  
+}
+  
 }

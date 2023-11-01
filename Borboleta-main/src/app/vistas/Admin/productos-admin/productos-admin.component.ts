@@ -19,9 +19,18 @@ export class ProductosAdminComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerProductosActivos();
     this.obtenerProductosInActivos();
+    this.productosFiltrados = this.productos; 
     this.obtenerMateriaPrima();
     // this.obtenerMateriaPrimaPuntos();
   }
+
+  //filtro de la tabla 
+  filtro: string = '';
+  productosFiltrados: productos[] = [];
+
+
+
+
   productos: productos[] = [];
   productosInActivos: productos[] = [];
   //agregar productos
@@ -315,6 +324,7 @@ export class ProductosAdminComponent implements OnInit {
     this.proyectoApiService.getAllProductosActivos().subscribe(
       (data) => {
         this.productos = data;
+        this.productosFiltrados = data;
         console.log(data);
       },
       (error) => {
@@ -322,6 +332,30 @@ export class ProductosAdminComponent implements OnInit {
       }
     );
   }
+
+  filtrarProductos(): void {
+    if (this.filtro) {
+      this.productosFiltrados = this.productos.filter((producto) => {
+        return (
+          producto.nombre.toLowerCase().includes(this.filtro.toLowerCase()) ||
+          producto.precio.toString().includes(this.filtro) ||
+          producto.descripccion.toLowerCase().includes(this.filtro.toLowerCase())
+        );
+      });
+    } else {
+      this.productosFiltrados = [...this.productos];
+    }
+  
+    if (this.filtro === '') {
+      // Si el campo de búsqueda está vacío, recargar la página
+      window.location.reload();
+    }
+  }
+  
+  
+
+
+
 
   obtenerProductosInActivos(): void {
     this.proyectoApiService.getAllProductosInActivos().subscribe(

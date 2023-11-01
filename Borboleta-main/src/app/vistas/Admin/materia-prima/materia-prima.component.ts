@@ -3,7 +3,6 @@ import { ProyectoApiService } from '../../../proyecto-api.service';
 import { Proveedor } from '../../../models/modelo-general.model';
 import { materiaPrima } from '../../../models/modelo-general.model';
 import { materiaPrimaPuntos } from '../../../models/modelo-general.model';
-
 import Swal from 'sweetalert2';
 
 
@@ -97,6 +96,7 @@ export class MateriaPrimaComponent implements OnInit {
       }
     }
   }
+
 
   calcularCostoTotal(): void {
     if (this.cantidadCompra !== null && this.selectedMatPrima !== null && this.selectedMatPrima.costo !== null) {
@@ -272,9 +272,7 @@ export class MateriaPrimaComponent implements OnInit {
       }
     });
   }
-  
-
-  
+    
   // onRegisterMateriaPrima(): void{
   //   if (!this.isFormValid()) {
   //     Swal.fire('Formulario incompleto', 'llena todos los campos para continuar', 'error');

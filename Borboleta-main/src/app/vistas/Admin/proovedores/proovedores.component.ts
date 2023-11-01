@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProyectoApiService } from '../../../proyecto-api.service';
-import { Proveedor } from '../../../models/modelo-general.model';
+import { EstadoMunicipio, Proveedor } from '../../../models/modelo-general.model';
 import { ProveedorInAct } from '../../../models/modelo-general.model';
+import { EstadosmuncipiosComponent } from "../../../components/estadosmuncipios/estadosmuncipios.component";
 import Swal from 'sweetalert2';
 import { timer } from 'rxjs';
 
@@ -15,6 +16,7 @@ export class ProovedoresComponent implements OnInit{
   telefono: string = '';
   proveedores: Proveedor[] = [];
   proveedoresInAct: ProveedorInAct[] = [];
+  estadosMunicipios: EstadoMunicipio[] = [];
   estado: string = '';
   municipio: string = '';
   codigoPostal: number | null = null;
@@ -29,7 +31,10 @@ export class ProovedoresComponent implements OnInit{
   ngOnInit(): void {
     this.obtenerProveedores();
     this.obtenerProveedoresInactivos();
+    
   }
+
+  
 
   isFormValid(): boolean {
     return this.nombre.trim() !== '' && this.telefono.trim() !== '';

@@ -3,6 +3,11 @@ export class ModeloGeneral {
 
 }
 
+export interface EstadoMunicipio {
+  estado: string;
+  municipios: string[];
+}
+
 export interface Proveedor {
     idProveedor: number;
     nombre: string;

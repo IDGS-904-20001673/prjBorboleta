@@ -37,7 +37,10 @@
         <!-- Botón "Next" -->
         <button class="pagination-button" (click)="pageChanged($event, 'next')" [disabled]="currentPage === totalPages">Next</button>
       </div>
-      
+      <br><br>
+      <div class="col-md-12 form-group">
+        <button routerLink="/productosAdmin" class="primary-btn w-100">regresar</button>
+      </div>  
       
       <!-- fin de todo el contenido de info Productos-->
     </div>

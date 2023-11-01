@@ -39,4 +39,11 @@ export class LoginComponent {
         }
       );
   }
+  scrollEspecifico(){
+    setTimeout(() => {
+    window.location.reload();
+  
+  }, 50);
+  
+}
 }

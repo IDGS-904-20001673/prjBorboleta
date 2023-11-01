@@ -17,7 +17,7 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="telPro">No. teléfono:</label>
-                <input type="text" class="form-control" id="telefono" [(ngModel)]="telefono" name="telefono" placeholder="No. teléfono" required/>
+                <input type="text" class="form-control" id="telefono" [(ngModel)]="telefono" name="telefono" placeholder="No. teléfono" maxlength="10" required/>
               </div>
               <div class="col-md-6 form-group">
                 <input type="text" class="form-control" id="estado" [(ngModel)]="estado" name="estado" placeholder="Estado" required>
@@ -26,7 +26,7 @@
                 <input type="text" class="form-control" id="municipio" [(ngModel)]="municipio" name="municipio" placeholder="Municipio" required>
               </div>
               <div class="col-md-6 form-group">
-                <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="codigoPostal" [(ngModel)]="codigoPostal" name="codigoPostal" placeholder="Código Postal" required>
+                <input maxlength="5"type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="codigoPostal" [(ngModel)]="codigoPostal" name="codigoPostal" placeholder="Código Postal" required>
               </div>
               <div class="col-md-6 form-group">
                 <input type="text" class="form-control" id="colonia" [(ngModel)]="colonia" name="colonia" placeholder="Colonia" required>

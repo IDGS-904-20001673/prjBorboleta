@@ -36,6 +36,7 @@ import { MateriaPrimaHistoricoComponent } from './vistas/Admin/materia-prima-his
 import { InfoProveedoresComponent } from './vistas/Admin/info-proveedores/info-proveedores.component';
 import { DescripcionProveedoresComponent } from './vistas/Admin/descripcion-proveedores/descripcion-proveedores.component';
 import { CarritoClienteComponent } from './vistas/Cliente/carrito-cliente/carrito-cliente.component';
+import { EstadosmuncipiosComponent } from './components/estadosmuncipios/estadosmuncipios.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { CarritoClienteComponent } from './vistas/Cliente/carrito-cliente/carrit
     InfoProveedoresComponent,
     DescripcionProveedoresComponent,
     CarritoClienteComponent,
+    EstadosmuncipiosComponent,
   ],
   imports: [
     ReactiveFormsModule,

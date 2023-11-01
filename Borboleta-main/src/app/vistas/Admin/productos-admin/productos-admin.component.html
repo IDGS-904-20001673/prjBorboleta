@@ -117,7 +117,60 @@
     </div>
 
     <!--inicio div tabla Prodcutos Activos-->
+
     <div class="card shadow mb-4">
+      <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
+        aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-primary">
+          Productos
+        </h6>
+      </a>
+      <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+          <input type="text" [(ngModel)]="filtro" (input)="filtrarProductos()" placeholder="Buscar..." class="form-control mb-3">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <th>Descripción</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let producto of productosFiltrados">
+                  <td>
+                    <img [src]="'../../../../assets/img/fotosGuardadas/' + producto.image_name" alt="Imagen" width="50" height="50">
+                  </td>
+                  <td>{{ producto.nombre }}</td>
+                  <td>${{ producto.precio }}</td>
+                  <td>{{ producto.descripccion }}</td>
+                  <td>
+                    <button class="btn btn-danger mx-2" (click)="cambiarEstatusProducto(producto.idProducto, 1)">
+                      <i class="fas fa-power-off"></i>
+                    </button>
+                    <button class="btn btn-success " (click)="toggleDiv(producto)">
+                      <i class="fas fa-plus-circle"></i>
+                    </button>
+                    <button class="btn btn-info mx-2" routerLink="/infoProductos" (click)="mostrarinfo(producto)">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="productosFiltrados.length === 0">
+            <p>No se encontraron coincidencias.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- <div class="card shadow mb-4">
       <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
         aria-expanded="true" aria-controls="collapseCardExample">
         <h6 class="m-0 font-weight-bold text-primary">
@@ -146,13 +199,13 @@
                 <td>${{ productos.precio }}</td>
                 <td>{{ productos.descripccion }}</td>
                 <td>
-                  <button class="btn btn-danger" (click)="cambiarEstatusProducto(productos.idProducto, 1)">
+                  <button class="btn btn-danger mx-2" (click)="cambiarEstatusProducto(productos.idProducto, 1)">
                     <i class="fas fa-power-off"></i>
                   </button>
-                  <button class="btn btn-success" (click)="toggleDiv(productos)">
+                  <button class="btn btn-success " (click)="toggleDiv(productos)">
                     <i class="fas fa-plus-circle"></i>
                   </button>
-                  <button class="btn btn-info" routerLink="/infoProductos" (click)="mostrarinfo(productos)">
+                  <button class="btn btn-info mx-2" routerLink="/infoProductos" (click)="mostrarinfo(productos)">
                     <i class="fas fa-info-circle"></i>
                   </button>
 
@@ -163,7 +216,7 @@
           </table>
         </div>
       </div>
-    </div>
+    </div> -->
     <!--Productos Inactivos-->
     <div class="card shadow mb-4">
       <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
