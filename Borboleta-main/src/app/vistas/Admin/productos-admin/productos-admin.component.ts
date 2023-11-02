@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ProyectoApiService } from '../../../proyecto-api.service';
 import { productos } from '../../../models/modelo-general.model';
 import { DetallePorProductoId } from '../../../models/modelo-general.model';
@@ -72,6 +73,20 @@ export class ProductosAdminComponent implements OnInit {
     }
   }
 
+
+  materiaPrimaControl = new FormControl();
+  onMateriaPrimaSelected(event: any) {
+    this.selectedMateriaPrima = event.option.value;
+  }
+  
+
+
+
+
+
+
+
+  
   onRegisterProducto(): void {
     const dataNuevoProducto = {
       nombre: this.nombre,
@@ -305,6 +320,14 @@ export class ProductosAdminComponent implements OnInit {
     );
   }
 
+  mostrarTabla: boolean = true;
+
+  eliminarMateriaPrima(index: number): void {
+    // Verifica que el índice esté dentro del rango del arreglo
+    if (index >= 0 && index < this.materiaPrimaArray.length) {
+      this.materiaPrimaArray.splice(index, 1);
+    }
+  }
   pushMateriaPrima(): void {
     const nuevoObjeto = {
       idProductoDetalle: 0, // Puedes dejarlo en 0 o asignarle el valor que corresponda
@@ -313,7 +336,12 @@ export class ProductosAdminComponent implements OnInit {
     };
 
     this.materiaPrimaArray.push(nuevoObjeto);
-
+    // Verifica si el arreglo está vacío y oculta la tabla si es necesario
+    if (this.materiaPrimaArray.length === 0) {
+      this.mostrarTabla = false;
+    } else {
+      this.mostrarTabla = true;
+    }
     // Imprime el array para verificar
     console.log('Array de Materias Primas:', this.materiaPrimaArray);
 
