@@ -1,0 +1,53 @@
+<app-header-adm>
+    <!-- Tenemos que usar el div con la clase main-content para que se inserte dentro del topbar y el sidebar-->
+    <div class="container-fluid main-content">
+
+        <div class="card shadow mb-4">
+            <a class="d-block card-header py-3" 
+                aria-expanded="true" aria-controls="collapseCardInactivos">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Info de proveedores
+                </h6>
+            </a>
+            <div class="collapse show" id="collapseCardInactivos">
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Estado</th>
+                                <th>Municipio</th>
+                                <th>Código Postal</th>
+                                <th>Colonia</th>
+                                <th>Calle</th>
+                                <th>Número Exterior</th>
+                                <th>Número Interior</th>
+                                <th>Referencia</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="detalleProveedor">
+                                <td>{{ detalleProveedor.nombre }}</td>
+                                <td>{{ detalleProveedor.telefono }}</td>
+                                <td>{{ detalleProveedor.domicilio.estado }}</td>
+                                <td>{{ detalleProveedor.domicilio.municipio }}</td>
+                                <td>{{ detalleProveedor.domicilio.codigoPostal }}</td>
+                                <td>{{ detalleProveedor.domicilio.colonia }}</td>
+                                <td>{{ detalleProveedor.domicilio.calle }}</td>
+                                <td>{{ detalleProveedor.domicilio.numeroExt }}</td>
+                                <td>{{ detalleProveedor.domicilio.numeroInt }}</td>
+                                <td>{{ detalleProveedor.domicilio.referencia }}</td>
+                              </tr>
+                        </tbody>
+                    </table>
+                    <div class="col-md-12 form-group">
+                        <button routerLink="/infoProveedores" class="primary-btn w-100">regresar</button>
+                    </div>  
+                </div>
+            </div>
+        </div> 
+           
+      <!-- fin de todo el contenido de info Productos-->
+    </div>
+  </app-header-adm>

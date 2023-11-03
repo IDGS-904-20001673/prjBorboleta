@@ -1,0 +1,82 @@
+<app-header></app-header>
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+      <div class="col-first">
+        <h1>Login/Register</h1>
+        <nav class="d-flex align-items-center">
+          <a routerLink="/home">Home<span class="lnr lnr-arrow-right"></span></a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Banner Area -->
+
+<!--================Login Box Area =================-->
+<section class="login_box_area section_gap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="login_box_img">
+            <img class="img-fluid" src="../../../../assets/img/login.jpg" alt="">
+            <div class="hover">
+              <h4>Ya tienes cuenta?</h4>
+              <p>No te preocupes, puedes iniciar sesión presionando el siguiente boton!</p>
+              <a class="primary-btn" (click)=" scrollEspecifico()" routerLink="/login">Inicio de Sesión</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="login_form_inner" style="height: 594px; overflow-y: scroll;">
+            <h3>Crea tu cuenta!</h3>
+            <form class="row login_form" (submit)="onRegister()" novalidate>
+                <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre" placeholder="Nombre"  required>
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="email" class="form-control" id="correo" [(ngModel)]="correo" name="correo" placeholder="Correo Electrónico" required>
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="password" class="form-control" id="contrasenia" [(ngModel)]="contrasenia" name="contrasenia" placeholder="Contraseña" required>
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="estado" [(ngModel)]="estado" name="estado" placeholder="Estado" required>
+                  </div>
+                  <div id="puntero"></div>
+                  <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="municipio" [(ngModel)]="municipio" name="municipio" placeholder="Municipio" required>
+                  </div>
+                 
+                  <div class="col-md-12 form-group">
+                    <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="codigoPostal" [(ngModel)]="codigoPostal" name="codigoPostal" placeholder="Código Postal" required>
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="colonia" [(ngModel)]="colonia" name="colonia" placeholder="Colonia" required>
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="calle" [(ngModel)]="calle" name="calle" placeholder="Calle" required>
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="number" class="form-control" id="numeroExt" [(ngModel)]="numeroExt" name="numeroExt" placeholder="Número Exterior" required>
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="numeroInt" [(ngModel)]="numeroInt" name="numeroInt" placeholder="Número Interior (Opcional)" >
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="referencia" [(ngModel)]="referencia" name="referencia" placeholder="Referencia" required>
+                  </div>
+              <div class="col-md-12 form-group">
+                <button type="submit" class="primary-btn">Crear Cuenta</button>
+              </div>
+            </form>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!--================End Login Box Area =================-->
+<app-footer></app-footer>

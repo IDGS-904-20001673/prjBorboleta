@@ -1,0 +1,47 @@
+<app-header-adm>
+    <!-- Tenemos que usar el div con la clase main-content para que se inserte dentro del topbar y el sidebar-->
+    <div class="container-fluid main-content">
+      <!-- inicio de todo el contenido de info Productos-->
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Punto</th>
+            <th>Stock</th>
+            <th>Hacer Producto</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let detalle of DetallePorProductoId | paginate: { itemsPerPage: pageSize, currentPage: currentPage }">
+            <td>
+                <img [src]="'../../../../assets/img/fotosGuardadas/' + detalle.producto.image_name" alt="Imagen" width="100"
+                    height="100">
+            </td>
+            <td>{{ detalle.punto }}</td>
+            <td>{{ detalle.cantidad }}</td>
+            <td>
+              <button class="btn btn-success" (click)="onRegisterCantidad(detalle.idProductoDetalle)">
+                <i class="fas fa-plus-circle"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination-container">
+        <!-- Botón "Previous" -->
+        <button class="pagination-button" (click)="pageChanged($event, 'previous')" [disabled]="currentPage === 1">Previous</button>
+      
+        <!-- Muestra el número de página actual -->
+        <input class="current-page-input" type="text" [value]="currentPage">
+      
+        <!-- Botón "Next" -->
+        <button class="pagination-button" (click)="pageChanged($event, 'next')" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+      <br><br>
+      <div class="col-md-12 form-group">
+        <button routerLink="/productosAdmin" class="primary-btn w-100">regresar</button>
+      </div>  
+      
+      <!-- fin de todo el contenido de info Productos-->
+    </div>
+  </app-header-adm>

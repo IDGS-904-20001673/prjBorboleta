@@ -1,0 +1,77 @@
+<app-header></app-header>
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Detalle del Producto</h1>
+                <nav class="d-flex align-items-center">
+                    <a routerLink="/home">Home<span class="lnr lnr-arrow-right"></span></a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <div class="single-prd-item">
+                    <img class="product-image"
+                        [src]="'../../../../assets/img/fotosGuardadas/' + DetallePorProductoId[0].producto.image_name"
+                        alt="Imagen">
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h3>{{DetallePorProductoId[0].producto.nombre}}</h3>
+                    <h2>${{DetallePorProductoId[0].producto.precio}}</h2>
+                    <ul class="list d-flex align-items-center">
+                        <li class="d-flex align-items-center">
+                            <div>
+                                <span>Puntos : </span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <div class="form-group">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-secondary"
+                                            *ngFor="let punto of puntosArray"
+                                            (click)="selectPunto(punto.idProductoDetalle, punto.cantidad, punto.punto)">
+                                            {{ punto.punto }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="form-group col-md-4">
+                        <label for="inputCantidad">Stock:</label>
+                        <input type="number" class="form-control" id="inputCantidad" [(ngModel)]="cantidadGlobal"
+                            name="cantidadGlob" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCantidad">Cantidad a comprar:</label>
+                        <input type="number" class="form-control" id="inputCantidad" [(ngModel)]="cantidadAcomprar"
+                            name="cantidadAcomprar" [(ngModel)]="selectedCantidad" [max]="cantidadGlobal" [min]="1"
+                            [disabled]="cantidadGlobal === 0">
+                    </div>
+
+
+
+
+
+                    <p>{{DetallePorProductoId[0].producto.descripccion}}</p>
+                    <div class="card_area d-flex align-items-center">
+                        <a class="primary-btn" (click)="registrarDetalle()">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================End Single Product Area =================-->
+<br>
+<app-footer></app-footer>

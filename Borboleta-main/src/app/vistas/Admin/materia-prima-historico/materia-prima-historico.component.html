@@ -1,0 +1,46 @@
+<app-header-adm>
+    <!-- Tenemos que usar el div con la clase main-content para que se inserte dentro del topbar y el sidebar-->
+    <div class="container-fluid main-content">
+        <div class="card shadow mb-4">
+          <a href="#collapseCardExample" class="d-block card-header py-3"
+            aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-primary">
+              Historico de compras
+            </h6>
+          </a>
+          <div class="collapse show" id="collapseCardExample">
+            <div class="card-body">
+              <input type="text" [(ngModel)]="filtro" (input)="filtrarHistorico()" placeholder="Buscar..." class="form-control mb-3">
+              <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Cantidad que se compró</th>
+                    <th>Pago total</th>
+                    <th>fecha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let compras of productosFiltrados">
+                    <td>
+                     <img [src]="dataURLtoImage(compras.materiaPrima.image_name)" alt="Imagen" width="50" height="50">
+
+                    </td>
+                    <td>{{compras.materiaPrima.nombreMateriaPrima }}</td>
+                    <td>{{compras.cantidadCompra }}</td>
+                    <td>${{compras.pagoTotal }}</td>
+                    <td>{{compras.fecha }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="productosFiltrados.length === 0">
+              <p>No se encontraron coincidencias.</p>
+            </div>
+          </div>
+        </div>
+        <!-- fin de todo el contenido de proveedores-->
+      </div>
+      
+  </app-header-adm>

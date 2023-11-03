@@ -1,0 +1,77 @@
+<app-header-adm>
+    <!-- Tenemos que usar el div con la clase main-content para que se inserte dentro del topbar y el sidebar-->
+    <div class="container-fluid main-content">
+        <!-- inicio de todo el contenido de proveedores-->
+        <div class="card shadow mb-4">
+            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
+                aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Lista de Proveedores Activos
+                </h6>
+            </a>
+            <div class="collapse show" id="collapseCardExample">
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let proveedor of proveedores">
+                                <td>{{ proveedor.nombre }}</td>
+                                <td>{{ proveedor.telefono }}</td>
+                                <td>
+                                    <button (click)="cambiarEstatusProveedor(proveedor.idProveedor)"
+                                        class="btn btn-danger mx-2">
+                                        <i class="fas fa-power-off"></i>
+                                    </button>
+                                    <button class="btn btn-info" routerLink="/descripcionProveedores" (click)="mostrarinfo(proveedor)">
+                                        <i class="fas fa-info-circle"></i>
+                                      </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow mb-4">
+            <a href="#collapseCardInactivos" class="d-block card-header py-3" data-toggle="collapse" role="button"
+                aria-expanded="true" aria-controls="collapseCardInactivos">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Lista de Proveedores Inactivos
+                </h6>
+            </a>
+            <div class="collapse show" id="collapseCardInactivos">
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let proveedoresInAct of proveedoresInAct">
+                                <td>{{ proveedoresInAct.nombre }}</td>
+                                <td>{{ proveedoresInAct.telefono }}</td>
+                                <td>
+                                    <button (click)="activarEstatusProveedor(proveedoresInAct.idProveedor)"
+                                        class="btn btn-success">
+                                        <i class="fas fa-power-off"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- fin de todo el contenido de proveedores-->
+    </div>
+</app-header-adm>
