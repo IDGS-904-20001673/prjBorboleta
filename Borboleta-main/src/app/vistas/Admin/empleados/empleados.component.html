@@ -1,78 +1,137 @@
 <app-header-adm>
 
-<div class="container-fluid main-content">
-<section class="login_box_area section_gap">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card-body">
-                    <h3>Registrar Empleado</h3>
-                    <br> <br>
-                    <form class="login_form" (submit)="onRegisterEmpleado()" novalidate>
-                        <div class="row">
-                            <div class="col-md-4 form-group">
+    <div class="container-fluid main-content">
+
+
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Agregar Empleado</h6>
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="form-row">
+                        <form class="row login_form" (submit)="onRegisterEmpleado()">
+                            <div class="form-group col-md-3">
                                 <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre" placeholder="Nombre" required>
+                                <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre"
+                                    placeholder="Nombre" required>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="form-group col-md-3">
                                 <label for="correo">Correo Electrónico:</label>
-                                <input type="email" class="form-control" id="correo" [(ngModel)]="correo" name="correo" placeholder="Correo Electrónico" required>
+                                <input type="email" class="form-control" id="correo" [(ngModel)]="correo" name="correo"
+                                    placeholder="Correo Electrónico" required>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="contrasenia">Contraseña:</label>
-                                <input type="password" class="form-control" id="contrasenia" [(ngModel)]="contrasenia" name="contrasenia" placeholder="Contraseña" required>
+                                <input type="password" class="form-control" id="contrasenia" [(ngModel)]="contrasenia"
+                                    name="contrasenia" placeholder="Contraseña" required>
                             </div>
-                        </div>
-                    
-                        <div class="row">
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="estado">Estado:</label>
-                                <input type="text" class="form-control" id="estado" [(ngModel)]="estado" name="estado" placeholder="Estado" required>
+                                <input type="text" class="form-control" id="estado" [(ngModel)]="estado" name="estado"
+                                    placeholder="Estado" required>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="municipio">Municipio:</label>
-                                <input type="text" class="form-control" id="municipio" [(ngModel)]="municipio" name="municipio" placeholder="Municipio" required>
+                                <input type="text" class="form-control" id="municipio" [(ngModel)]="municipio"
+                                    name="municipio" placeholder="Municipio" required>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="codigoPostal">Código Postal:</label>
-                                <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="codigoPostal" [(ngModel)]="codigoPostal" name="codigoPostal" placeholder="Código Postal" required>
+                                <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                                    class="form-control" id="codigoPostal" [(ngModel)]="codigoPostal"
+                                    name="codigoPostal" placeholder="Código Postal" required>
                             </div>
-                        </div>
-                    
-                        <div class="row">
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="colonia">Colonia:</label>
-                                <input type="text" class="form-control" id="colonia" [(ngModel)]="colonia" name="colonia" placeholder="Colonia" required>
+                                <input type="text" class="form-control" id="colonia" [(ngModel)]="colonia"
+                                    name="colonia" placeholder="Colonia" required>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="calle">Calle:</label>
-                                <input type="text" class="form-control" id="calle" [(ngModel)]="calle" name="calle" placeholder="Calle" required >
+                                <input type="text" class="form-control" id="calle" [(ngModel)]="calle" name="calle"
+                                    placeholder="Calle" required>
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="numeroExt">Número Exterior:</label>
-                                <input type="number" class="form-control" id="numeroExt" [(ngModel)]="numeroExt" name="numeroExt" placeholder="Número Exterior" required>
+                                <input type="number" class="form-control" id="numeroExt" [(ngModel)]="numeroExt"
+                                    name="numeroExt" placeholder="Número Exterior" required>
                             </div>
-                        </div>
-                    
-                        <div class="row">
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="numeroInt">Número Interior (Opcional):</label>
-                                <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="numeroInt" [(ngModel)]="numeroInt" name="numeroInt" placeholder="Número Interior (Opcional)">
+                                <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                                    class="form-control" id="numeroInt" [(ngModel)]="numeroInt" name="numeroInt"
+                                    placeholder="Número Interior (Opcional)">
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-3 form-group">
                                 <label for="referencia">Referencia:</label>
-                                <input type="text" class="form-control" id="referencia" [(ngModel)]="referencia" name="referencia" placeholder="Referencia" required>
+                                <input type="text" class="form-control" id="referencia" [(ngModel)]="referencia"
+                                    name="referencia" placeholder="Referencia" required>
                             </div>
-                        </div>
-                    
-                        <div class="col-md-12 form-group">
-                            <button type="submit" class="primary-btn">Registrar</button>
-                        </div>
-                    </form>
+                            <div class="col-md-12 form-group">
+                                <button type="submit" class="primary-btn">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <br>
+
+            <div class="card shadow mb-4">
+                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
+                    aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        Materia Prima
+                    </h6>
+                </a>
+                <div class="collapse show" id="collapseCardExample">
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>Contraseña</th>
+                                    <th>Código Postal</th>
+                                    <th>Referencia</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr *ngFor="let matPrimaP of matPrimaP">
+                                    <td>
+                                        <img [src]="dataURLtoImage(matPrimaP.image_name)" alt="Imagen" width="50" height="50">
+                                    </td>
+                                    <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">{{
+                                        matPrimaP.nombreMateriaPrima }}</td>
+                                    <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">{{
+                                        matPrimaP.cantidadTotal }}</td>
+                                    <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">${{
+                                        matPrimaP.costo }}</td>
+                                    <td>
+                                        <button class="btn btn-success" (click)="toggleDiv(matPrimaP)">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </button>
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
         </div>
     </div>
-</section>
-</div>
 </app-header-adm>

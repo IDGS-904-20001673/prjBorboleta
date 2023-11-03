@@ -10,7 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { AuthGuardService } from './guards/auth-guard.service';
+import { AuthGuardService } from './vistas/Admin/descripcion-proveedores/guards/auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';

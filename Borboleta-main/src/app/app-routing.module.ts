@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './vistas/home/home.component';
 import { LoginComponent } from './vistas/login/login.component';
 import { RegistroComponent } from './vistas/registro/registro.component';
-import { AuthGuardService } from './guards/auth-guard.service';
+import { AuthGuardService } from './vistas/Admin/descripcion-proveedores/guards/auth-guard.service';
 import { HeaderAdmComponent } from './vistas/Admin/header-adm/header-adm.component';
 import { ErrorsComponent } from './vistas/errors/errors.component';
 import { ForbiddenComponent } from './vistas/forbidden/forbidden.component';

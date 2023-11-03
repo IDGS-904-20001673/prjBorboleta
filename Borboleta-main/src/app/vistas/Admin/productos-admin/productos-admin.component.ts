@@ -425,13 +425,8 @@ export class ProductosAdminComponent implements OnInit {
         );
       });
     } else {
-      this.productosFiltradosInactivos = [...this.productos];
+     
     }
-  
-    // if (this.filtro2 === '') {
-    //   // Si el campo de búsqueda está vacío, recargar la página
-    //   window.location.reload();
-    // }
   }
 
   dataURLtoImage(dataURL: string): string {

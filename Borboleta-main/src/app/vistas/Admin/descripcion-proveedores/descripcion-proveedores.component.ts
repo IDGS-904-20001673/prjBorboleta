@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProyectoApiService } from '../../../proyecto-api.service';
 import { Proveedor } from '../../../models/modelo-general.model';
-import { ProveedorInAct } from '../../../models/modelo-general.model';
-import Swal from 'sweetalert2';
-import { timer } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-descripcion-proveedores',

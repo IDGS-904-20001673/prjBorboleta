@@ -18,7 +18,9 @@ export class ProductosClienteComponent implements OnInit{
   }
   productos: productos[] = [];
   DetallePorProductoId: DetallePorProductoId[] = [];
-
+  dataURLtoImage(dataURL: string): string {
+    return 'data:image/jpeg;base64,' + dataURL;
+  }
 
   obtenerProductos(): void {
     this.proyectoApiService.getAllProductosActivos().subscribe(

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
 import { MateriaPrimaHistoricoComponent } from './materia-prima-historico.component';
+import { ProyectoApiService } from 'src/app/proyecto-api.service';
 
 describe('MateriaPrimaHistoricoComponent', () => {
   let component: MateriaPrimaHistoricoComponent;
@@ -8,7 +9,9 @@ describe('MateriaPrimaHistoricoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MateriaPrimaHistoricoComponent]
+      imports: [HttpClientModule], // Importa HttpClientModule
+      declarations: [MateriaPrimaHistoricoComponent],
+      providers: [ProyectoApiService], 
     });
     fixture = TestBed.createComponent(MateriaPrimaHistoricoComponent);
     component = fixture.componentInstance;

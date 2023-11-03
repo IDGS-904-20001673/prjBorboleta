@@ -21,7 +21,8 @@
       <div class="col-lg-4 col-md-6" *ngFor="let producto of productos">
         <div class="">
           <div class="single-product">
-            <img class="img-fluid" [src]="'../../../../assets/img/fotosGuardadas/' + producto.image_name" alt="Imagen" width="10" height="10">
+            <img class="img-fluid" [src]="dataURLtoImage(producto.image_name)" alt="Imagen" width="50" height="50">
+
             <div class="product-details">
               <h6>{{ producto.nombre }}</h6>
               <div class="price">
@@ -31,7 +32,7 @@
               <div class="prd-bottom">
                 <a (click)="mostrarDetalleProducto(producto.idProducto)" class="social-info">
                   <span class="ti-bag"></span>
-                  <p class="hover-text">add to bag</p>
+                  <p class="hover-text">Añadir</p>
                 </a>
               </div>
             </div>

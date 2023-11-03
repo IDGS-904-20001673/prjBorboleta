@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ProyectoApiService } from '../../proyecto-api.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
 
 
 
