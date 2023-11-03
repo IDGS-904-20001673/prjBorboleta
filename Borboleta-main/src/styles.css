@@ -1,0 +1,6 @@
+.mi-div-con-padding {
+  padding-top: 20px; /* Padding de 20 píxeles en la parte superior */
+  padding-bottom: 20px; /* Padding de 20 píxeles en la parte inferior */
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

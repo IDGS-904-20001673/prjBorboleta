@@ -1,0 +1,319 @@
+<app-header-adm>
+  <!-- Tenemos que usar el div con la clase main-content para que se inserte dentro del topbar y el sidebar-->
+  <div class="container-fluid main-content">
+    <!-- inicio de todo el contenido de proveedores-->
+    <!--Div agregar productos-->
+    <div class="card shadow mb-4" *ngIf="divVisibleAgregar">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Registrar Producto</h6>
+      </div>
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-center">
+          <div class="form-row">
+            <form class="row login_form">
+              <div class="form-group col-md-6">
+                <label for="nombrePro">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre" name="nombre" placeholder="Nombre del Producto" required/>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="telPro">Precio</label>
+                <input type="text" class="form-control" id="precio" [(ngModel)]="precio" name="precio" placeholder="Precio" required oninput="this.value=this.value.replace(/[^0-9]/g,'')"/>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="nombrePro">Descripccion:</label>
+                <input type="text" class="form-control" id="descripcion" [(ngModel)]="descripcion" name="descripcion" placeholder="Descripccion del producto" required/>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="imagen">Imagen:</label>
+                <input type="file" class="form-control-file" id="imagen" (change)="onImageSelected($event)"
+                  accept="image/*">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="nombrePro">Punto del Tenis:</label>
+                <input type="text" class="form-control" id="punto" [(ngModel)]="punto" name="punto" placeholder="Punto" required/>
+              </div>
+              <div class="form-group col-md-4">
+
+              </div>
+              <div class="form-group col-md-4">
+
+              </div>
+              <div class="form-group col-md-4">
+                <label for="selectProveedor">Seleccionar Materia Prima:</label>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="selectProveedorDropdown"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ getMateriaPrimaNombre(selectedMateriaPrima) || 'Seleccione una materia prima' }}
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="selectProveedorDropdown">
+                    <a class="dropdown-item" *ngFor="let matPrimaItem of matPrima" (click)="selectMateriaPrima(matPrimaItem.materiaPrimaId)">
+                      {{ matPrimaItem.nombreMateriaPrima }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Asi deberia quedar bien nada mas es el error de que no muestra nada  -->
+              <!-- <div class="form-group col-md-4">
+                <label for="selectProveedor">Seleccionar Materia Prima:</label>
+                <select class="form-control" [(ngModel)]="selectedMateriaPrima" name="selectedMateriaPrima">
+                  <option value="">Seleccione una materia prima</option>
+                  <option *ngFor="let matPrimaItem of matPrima" [value]="matPrimaItem.materiaPrimaId">
+                    {{ matPrimaItem.nombreMateriaPrima }}
+                  </option>
+                </select>
+              </div> -->
+              <div class="form-group col-md-4">
+                <label for="nombrePro">Cantidad a usar:</label>
+                <input type="text" class="form-control" id="cantidadMateriaPrima" [(ngModel)]="cantidadMateriaPrima" name="cantidadMateriaPrima" placeholder="Cantidad a usar" required/>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="nombrePro">Agregar materia prima al producto:</label><br>
+                <button type="button" (click)="pushMateriaPrima()" class="btn btn-success"><i class="fas fa-plus"></i></button>
+              </div>
+              <div class="form-group col-md-12">
+                <table class="table table-bordered" *ngIf="mostrarTabla">
+                  <thead>
+                    <tr>
+                      <th>Materia Prima</th>
+                      <th>Cantidad</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let materiaPrimaItem of materiaPrimaArray; let i = index">
+                      <td>{{ getMateriaPrimaNombre(materiaPrimaItem.materiaPrimaId) }}</td>
+                      <td>{{ materiaPrimaItem.cantidadUsoMateria }}</td>
+                      <td>
+                        <button type="button" class="btn btn-danger" (click)="eliminarMateriaPrima(i)">Eliminar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-12 form-group">
+                <button type="button" class="primary-btn" (click)="onRegisterProducto()">Registrar Producto</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Div agregar puntos-->
+    <div class="card shadow mb-4" *ngIf="divVisiblePunto">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Registrar Puntos al Producto</h6>
+      </div>
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-center">
+          <div class="form-row">
+            <form class="row login_form">
+              <div class="form-group col-md-4">
+                <label for="nombrePro">Punto del Tenis:</label>
+                <input type="text" class="form-control" id="punto" [(ngModel)]="punto" name="punto" placeholder="Punto" required/>
+              </div>
+              <div class="form-group col-md-4">
+              </div>
+              <div class="form-group col-md-4">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="selectProveedor">Seleccionar Materia Prima:</label>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="selectProveedorDropdown"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ getMateriaPrimaNombre(selectedMateriaPrima) || 'Seleccione una materia prima' }}
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="selectProveedorDropdown">
+                    <a class="dropdown-item" *ngFor="let matPrimaItem of matPrima" (click)="selectMateriaPrima(matPrimaItem.materiaPrimaId)">
+                      {{ matPrimaItem.nombreMateriaPrima }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="nombrePro">Cantidad a usar:</label>
+                <input type="text" class="form-control" id="cantidadMateriaPrima" [(ngModel)]="cantidadMateriaPrima" name="cantidadMateriaPrima" placeholder="Cantidad a usar" required/>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="nombrePro">Agregar materia prima al producto:</label><br>
+                <button type="button" (click)="pushMateriaPrima()" class="btn btn-success"><i class="fas fa-plus"></i></button>
+              </div>
+              <div class="form-group col-md-12">
+                <table class="table table-bordered" *ngIf="mostrarTabla">
+                  <thead>
+                    <tr>
+                      <th>Materia Prima</th>
+                      <th>Cantidad</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let materiaPrimaItem of materiaPrimaArray; let i = index">
+                      <td>{{ getMateriaPrimaNombre(materiaPrimaItem.materiaPrimaId) }}</td>
+                      <td>{{ materiaPrimaItem.cantidadUsoMateria }}</td>
+                      <td>
+                        <button type="button" class="btn btn-danger" (click)="eliminarMateriaPrima(i)">Eliminar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-12 form-group">
+                <button type="button" class="primary-btn" (click)="onRegisterPunto()">Registrar Punto</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--inicio div tabla Prodcutos Activos-->
+
+    <div class="card shadow mb-4">
+      <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
+        aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-primary">
+          Productos Activos
+        </h6>
+      </a>
+      <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+          <input type="text" [(ngModel)]="filtro" (input)="filtrarProductos()" placeholder="Buscar..." class="form-control mb-3">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <th>Descripción</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let producto of productosFiltrados">
+                  <td>
+                   
+                    <img [src]="dataURLtoImage(producto.image_name)" alt="Imagen" width="50" height="50">
+
+                  </td>
+                  <td>{{ producto.nombre }}</td>
+                  <td>${{ producto.precio }}</td>
+                  <td>{{ producto.descripccion }}</td>
+                  <td>
+                    <button class="btn btn-danger mx-2" (click)="cambiarEstatusProducto(producto.idProducto, 1)">
+                      <i class="fas fa-power-off"></i>
+                    </button>
+                    <button class="btn btn-success " (click)="toggleDiv(producto)">
+                      <i class="fas fa-plus-circle"></i>
+                    </button>
+                    <button class="btn btn-info mx-2" routerLink="/infoProductos" (click)="mostrarinfo(producto)">
+                      <i class="fas fa-info-circle"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="productosFiltrados.length === 0">
+            <p>No se encontraron coincidencias.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- <div class="card shadow mb-4">
+      <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
+        aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-primary">
+          Productos
+        </h6>
+      </a>
+      <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>descripccion</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let productos of productos">
+                <td>
+                  <img [src]="'../../../../assets/img/fotosGuardadas/' + productos.image_name" alt="Imagen" width="50"
+                    height="50">
+                </td>
+                <td>{{ productos.nombre }}</td>
+                <td>${{ productos.precio }}</td>
+                <td>{{ productos.descripccion }}</td>
+                <td>
+                  <button class="btn btn-danger mx-2" (click)="cambiarEstatusProducto(productos.idProducto, 1)">
+                    <i class="fas fa-power-off"></i>
+                  </button>
+                  <button class="btn btn-success " (click)="toggleDiv(productos)">
+                    <i class="fas fa-plus-circle"></i>
+                  </button>
+                  <button class="btn btn-info mx-2" routerLink="/infoProductos" (click)="mostrarinfo(productos)">
+                    <i class="fas fa-info-circle"></i>
+                  </button>
+
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> -->
+    <!--Productos Inactivos-->
+    <div class="card shadow mb-4">
+      <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
+        aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-primary">
+          Productos Inactivos
+        </h6>
+      </a>
+      <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+          <input type="text" [(ngModel)]="filtro2" (input)="filtrarProductosIn()" placeholder="Buscar..." class="form-control mb-3">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>descripccion</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let productosInActivos of productosFiltradosInactivos">
+                <td>
+                  <img [src]="'../../../../assets/img/fotosGuardadas/' + productosInActivos.image_name" alt="Imagen"
+                    width="50" height="50">
+                </td>
+                <td>{{ productosInActivos.nombre }}</td>
+                <td>${{ productosInActivos.precio }}</td>
+                <td>{{ productosInActivos.descripccion }}</td>
+                <td>
+                  <button class="btn btn-success" (click)="cambiarEstatusProducto(productosInActivos.idProducto, 0)">
+                    <i class="fas fa-power-off"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="productosFiltradosInactivos.length === 0">
+          <p>No se encontraron coincidencias.</p>
+        </div>
+      </div>
+    </div>
+    <!-- fin de todo el contenido de proveedores-->
+  </div>
+</app-header-adm>

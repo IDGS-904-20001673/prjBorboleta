@@ -1,0 +1,162 @@
+<app-header></app-header>
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Shopping Cart</h1>
+                <nav class="d-flex align-items-center">
+                    <a routerLink="/home">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a>Carrito</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+<section>
+    <div class="container">
+        <div class="row">
+            <h3 class="col-lg-12">Metodo de pago</h3>
+            <div class="col-lg-12">
+                <label for="">Tarjeta</label>
+                <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 16);" class="form-control" id="tarjeta" [(ngModel)]="tarjeta" name="tarjeta" placeholder="Número de Tarjeta" required>
+            </div>
+            <div class="col-lg-3">
+                <label for="">Vencimiento</label>
+                <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if (this.value < 1) this.value = '1'; else if (this.value > 12) this.value = '12';" class="form-control" id="mes" [(ngModel)]="mes" name="mes" placeholder="MM" required>
+            </div>
+            <div class="col-lg-3">
+                <label for=""></label>
+                <br>
+                <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, ''); if (this.value < 23) this.value = '23'; else if (this.value > 29) this.value = '29';" class="form-control" id="año" [(ngModel)]="anio" name="año" placeholder="AA" required>
+            </div>
+            
+            <div class="col-lg-6">
+                <label for="">CVV</label>
+                <input type="number" oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="cvv" [(ngModel)]="cvv" name="cvv" placeholder="000" required>
+            </div>
+        </div>
+    </div>
+</section>
+    <!--================Checkout Area =================-->
+    <section class="checkout_area section_gap">
+        <div class="container">
+            <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <h3>Direccion de envío</h3>
+                        <form class="row contact_form">
+                            <div class="col-md-6 form-group">
+                                <label for="">Estado: </label>
+                                <input type="text" class="form-control" id="estado" [(ngModel)]="estado" name="estado" placeholder="Estado" required>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="">Municipio: </label>
+                                <input type="text" class="form-control" id="municipio" [(ngModel)]="municipio" name="municipio" placeholder="Municipio" required>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="">Codigo Postal: </label>
+                                <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="codigoPostal" [(ngModel)]="codigoPostal" name="codigoPostal" placeholder="Código Postal" required>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="">Colonia: </label>
+                                <input type="text" class="form-control" id="colonia" [(ngModel)]="colonia" name="colonia" placeholder="Colonia" required>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="">Calle: </label>
+                                <input type="text" class="form-control" id="calle" [(ngModel)]="calle" name="calle" placeholder="Calle" required>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="">Numero Exterior: </label>
+                                <input type="number" class="form-control" id="numeroExt" [(ngModel)]="numeroExt" name="numeroExt" placeholder="Número Exterior" required>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="">Numero Interior: </label>
+                                <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="numeroInt" [(ngModel)]="numeroInt" name="numeroInt" placeholder="Número Interior (Opcional)" >
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="">Referencia: </label>
+                                <input type="text" class="form-control" id="referencia" [(ngModel)]="referencia" name="referencia" placeholder="Referencia" required>
+                              </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="order_box">
+                            <h2>Tu Orden</h2>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Punto</th>
+                                        <th>Cantidad</th>
+                                        <th>Costo</th>
+                                        <th>Total</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let detalle of detalleProductoParaCompras; let i = index">
+                                        <td>{{ detalle.nombre }}</td>
+                                        <td>{{ detalle.punto }}</td>
+                                        <td>
+                                            <input class="quantity-input" type="number" [(ngModel)]="detalle.cantidad" [max]="detalle.stock" [min]="1">
+                                        </td>
+                                        <td>{{ detalle.costo | currency }}</td>
+                                        <td>{{ (detalle.cantidad * detalle.costo) | currency }}</td>
+                                        <td>
+                                            <button class="btn btn-link" (click)="eliminarDetalle(i)">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="subtotal-total">
+                                <p>Subtotal: {{ calcularSubtotal() | currency }}</p>
+                                <p>Costo de envío: $50.00</p>
+                                <p>Total: {{ calcularTotal() | currency }}</p>
+                            </div>
+                            <a class="primary-btn" href="#">Proceed to Paypal</a>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Checkout Area =================-->
+
+<app-footer></app-footer>
+
+<!-- 
+<div class="col-lg-4">
+    <div class="order_box">
+        <h2>Tu Orden</h2>
+        <ul class="list">
+            <li><a href="#">Producto <span>Total</span></a></li>
+            <li *ngFor="let detalle of detalleProductoParaCompras; let i = index">
+                <div class="order-item">
+                    <a href="#">{{ detalle.nombre }} ({{ detalle.punto }})</a>
+                    <span class="middle">
+                        <input class="quantity-input" type="number" [(ngModel)]="detalle.cantidad" [max]="detalle.stock" [min]="1">
+                    </span>
+                    <span class="last">
+                        <button class="btn btn-link" (click)="eliminarDetalle(i)">Eliminar</button>
+                    </span>
+                    <span class="cost">{{ detalle.costo | currency }}</span>
+                    <span class="total">{{ (detalle.cantidad * detalle.costo) | currency }}</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="list list_2">
+            <li><a href="#">Subtotal <span>{{ calcularSubtotal() | currency }}</span></a></li>
+            <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
+            <li><a href="#">Total <span>{{ calcularTotal() | currency }}</span></a></li>
+        </ul>
+        <a class="primary-btn" href="#">Proceed to Paypal</a>
+    </div>
+</div>
+
+ -->

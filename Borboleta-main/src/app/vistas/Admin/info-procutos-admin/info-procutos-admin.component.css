@@ -1,0 +1,28 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .pagination-button {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .pagination-button:disabled {
+    background-color: #666; /* Cambia el color de fondo cuando está en estado disabled */
+    cursor: not-allowed; /* Cambia el cursor cuando está en estado disabled */
+  }
+  
+  
+  .current-page-input {
+    width: 30px;
+    text-align: center;
+    margin: 0 10px;
+  }
+  
