@@ -40,16 +40,29 @@
               </div>
               <div class="form-group col-md-4">
                 <label for="selectProveedor">Seleccionar Materia Prima:</label>
-                <mat-form-field>
-                  <input matInput [formControl]="materiaPrimaControl" placeholder="Seleccione una materia prima">
-                  <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let matPrimaItem of matPrima" [value]="matPrimaItem">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="selectProveedorDropdown"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ getMateriaPrimaNombre(selectedMateriaPrima) || 'Seleccione una materia prima' }}
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="selectProveedorDropdown">
+                    <a class="dropdown-item" *ngFor="let matPrimaItem of matPrima" (click)="selectMateriaPrima(matPrimaItem.materiaPrimaId)">
                       {{ matPrimaItem.nombreMateriaPrima }}
-                    </mat-option>
-                  </mat-autocomplete>
-                </mat-form-field>
+                    </a>
+                  </div>
+                </div>
               </div>
-              
+
+              <!-- Asi deberia quedar bien nada mas es el error de que no muestra nada  -->
+              <!-- <div class="form-group col-md-4">
+                <label for="selectProveedor">Seleccionar Materia Prima:</label>
+                <select class="form-control" [(ngModel)]="selectedMateriaPrima" name="selectedMateriaPrima">
+                  <option value="">Seleccione una materia prima</option>
+                  <option *ngFor="let matPrimaItem of matPrima" [value]="matPrimaItem.materiaPrimaId">
+                    {{ matPrimaItem.nombreMateriaPrima }}
+                  </option>
+                </select>
+              </div> -->
               <div class="form-group col-md-4">
                 <label for="nombrePro">Cantidad a usar:</label>
                 <input type="text" class="form-control" id="cantidadMateriaPrima" [(ngModel)]="cantidadMateriaPrima" name="cantidadMateriaPrima" placeholder="Cantidad a usar" required/>
@@ -124,6 +137,26 @@
               <div class="form-group col-md-4">
                 <label for="nombrePro">Agregar materia prima al producto:</label><br>
                 <button type="button" (click)="pushMateriaPrima()" class="btn btn-success"><i class="fas fa-plus"></i></button>
+              </div>
+              <div class="form-group col-md-12">
+                <table class="table table-bordered" *ngIf="mostrarTabla">
+                  <thead>
+                    <tr>
+                      <th>Materia Prima</th>
+                      <th>Cantidad</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let materiaPrimaItem of materiaPrimaArray; let i = index">
+                      <td>{{ getMateriaPrimaNombre(materiaPrimaItem.materiaPrimaId) }}</td>
+                      <td>{{ materiaPrimaItem.cantidadUsoMateria }}</td>
+                      <td>
+                        <button type="button" class="btn btn-danger" (click)="eliminarMateriaPrima(i)">Eliminar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
               <div class="col-md-12 form-group">
                 <button type="button" class="primary-btn" (click)="onRegisterPunto()">Registrar Punto</button>

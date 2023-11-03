@@ -20,6 +20,7 @@ import { MateriaPrimaHistoricoComponent } from './vistas/Admin/materia-prima-his
 import { InfoProveedoresComponent } from './vistas/Admin/info-proveedores/info-proveedores.component';
 import { DescripcionProveedoresComponent } from './vistas/Admin/descripcion-proveedores/descripcion-proveedores.component';
 import { CarritoClienteComponent } from './vistas/Cliente/carrito-cliente/carrito-cliente.component';
+import { EmpleadosComponent } from './vistas/Admin/empleados/empleados.component';
 
 
 
@@ -60,6 +61,11 @@ const routes: Routes = [
     path: 'productosCliente',
     canActivate: [AuthGuardService],
     component: ProductosClienteComponent 
+  },
+  { 
+    path: 'empleados',
+    canActivate: [AuthGuardService],
+    component: EmpleadosComponent 
   },
   { 
     path: 'infoProductos',

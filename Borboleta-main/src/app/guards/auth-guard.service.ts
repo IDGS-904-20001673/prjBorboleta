@@ -12,6 +12,7 @@ export class AuthGuardService implements CanActivate {
     'homeAdmin',
     'materiaPrima',
     'productosAdmin',
+    'empleados',
     'materiaPrimaCompras',
     'infoProductos',
     'perfilAdm',

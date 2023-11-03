@@ -8,7 +8,7 @@ import { materiaPrimaPuntos } from './models/modelo-general.model';
 import { comprasMP } from './models/modelo-general.model';
 import { agregarMateriaPrima } from './models/modelo-general.model';
 import { productos } from './models/modelo-general.model';
-import { domicilio } from './models/modelo-general.model';
+import { domicilio } from './models/modelo-general.model'
 import { MateriaPrimaDetalle } from './models/modelo-general.model';
 
 
@@ -25,6 +25,7 @@ export class ProyectoApiService {
   private  urlPadre = 'http://192.168.1.5:7109/tenis'
   private apiUrlLogin = this.urlPadre + '/login';
   private apiUrlRegistro = this.urlPadre + '/Registrase'; 
+  private apiUrlRegistroEmpleado = this.urlPadre + '/RegistrarEmpleado'; 
   private apiUrlDomicilio = this.urlPadre + '/ConsultarDomicilioPorIdUsuario'
   private apiUrlUpdateDomicilio = this.urlPadre + '/ActualizarUsuario';
   
@@ -48,10 +49,20 @@ export class ProyectoApiService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-
     // Realizar la solicitud HTTP POST con los datos en el cuerpo
     return this.http.post<any>(`${this.apiUrlRegistro}`, data, { headers: headers });
   }
+
+  registerEmpleado(data: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    // Realizar la solicitud HTTP POST con los datos en el cuerpo
+    return this.http.post<any>(`${this.apiUrlRegistroEmpleado}`, data, { headers: headers });
+  }
+
+
+
 
   getDomiciliobyId(data: any): Observable<domicilio[]> {
     console.log('esto lleva data de la api',data)

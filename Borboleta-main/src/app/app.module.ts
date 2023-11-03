@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -37,6 +39,7 @@ import { InfoProveedoresComponent } from './vistas/Admin/info-proveedores/info-p
 import { DescripcionProveedoresComponent } from './vistas/Admin/descripcion-proveedores/descripcion-proveedores.component';
 import { CarritoClienteComponent } from './vistas/Cliente/carrito-cliente/carrito-cliente.component';
 import { EstadosmuncipiosComponent } from './components/estadosmuncipios/estadosmuncipios.component';
+import { EmpleadosComponent } from './vistas/Admin/empleados/empleados.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,7 @@ import { EstadosmuncipiosComponent } from './components/estadosmuncipios/estados
     MateriaPrimaComponent,
     ProductosAdminComponent,
     ProductosClienteComponent,
+    EmpleadosComponent,
     ForbiddenComponent,
     MateriaPrimaComprasComponent,
     InfoProcutosAdminComponent,
@@ -64,11 +68,13 @@ import { EstadosmuncipiosComponent } from './components/estadosmuncipios/estados
     DescripcionProveedoresComponent,
     CarritoClienteComponent,
     EstadosmuncipiosComponent,
+    EmpleadosComponent,
   ],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     FormsModule,
     HttpClientModule,
     RouterModule,
@@ -77,6 +83,7 @@ import { EstadosmuncipiosComponent } from './components/estadosmuncipios/estados
     MatTableModule,
     NgxPaginationModule,
     MatAutocompleteModule,
+    MatFormFieldModule,
     BsDropdownModule.forRoot()
   ],
   providers: [

@@ -62,7 +62,19 @@ export class ProductosAdminComponent implements OnInit {
   selectedProducto: productos | null = null;
   //-------------------------------------
 
+  materiaPrimaInput: string = '';
+  materiasPrimasFiltradas: any[] = []; // aquí almacenarás las materias primas filtradas
+  selectedOption: any = null;
 
+  filterMateriasPrimas() {
+    this.materiasPrimasFiltradas = this.matPrima.filter(matPrimaItem =>
+      matPrimaItem.nombreMateriaPrima.toLowerCase().includes(this.materiaPrimaInput.toLowerCase())
+    );
+  }
+  
+
+
+  
   onImageSelected(event: any): void {
     if (event.target.files && event.target.files.length > 0) {
       const selectedFile = event.target.files[0];
@@ -306,7 +318,15 @@ export class ProductosAdminComponent implements OnInit {
   }
 
   selectMateriaPrima(materiaPrimaId: number): void {
-    this.selectedMateriaPrima = materiaPrimaId;
+    this.selectedOption = this.matPrima.find(matPrimaItem => matPrimaItem.materiaPrimaId === materiaPrimaId);
+  
+    if (this.selectedOption) {
+      // Asigna la materia prima seleccionada al campo selectedMateriaPrima
+      this.selectedMateriaPrima = this.selectedOption.materiaPrimaId;
+    }
+  
+    this.materiaPrimaInput = '';
+    this.materiasPrimasFiltradas = [];
   }
 
   obtenerMateriaPrima(): void {

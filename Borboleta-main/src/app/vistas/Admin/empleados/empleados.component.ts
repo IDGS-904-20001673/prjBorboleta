@@ -1,21 +1,21 @@
-import { Component } from '@angular/core';
-import { ProyectoApiService } from '../../proyecto-api.service';
+import { Component, OnInit } from '@angular/core';
+import { ProyectoApiService } from '../../../proyecto-api.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 
-
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-empleados',
+  templateUrl: './empleados.component.html',
+  styleUrls: ['./empleados.component.css']
 })
-export class RegistroComponent {
-  
+
+export class EmpleadosComponent {
+
   nombre: string = '';
   correo: string = '';
   contrasenia: string = '';
-  idRole: number = 3;
+  idRole: number = 2;
   estado: string = '';
   municipio: string = '';
   codigoPostal: number | null = null;
@@ -36,9 +36,12 @@ export class RegistroComponent {
   }
 
   constructor(private proyectoApiService: ProyectoApiService) { }
-  onRegister(): void {
+  onRegisterEmpleado(): void {    
+      console.log('Función onRegister llamada');
+
     // Verificar si el formulario es válido
     this.checkFormValidity();
+    console.log('si checo el formuario');
   
     // Si el formulario es válido, enviar los datos al servidor
     if (this.isFormValid) {
@@ -60,17 +63,18 @@ export class RegistroComponent {
         }
       };
       console.log(data);
-      this.proyectoApiService.register(data).subscribe(
+      this.proyectoApiService.registerEmpleado(data).subscribe(
         (response) => {
           console.log('Respuesta de la API de registro:', response);
           console.log('estatus code: ', response.statusCode);
   
           // Verificar el código de estado de la respuesta
           if (response.statusCode === 200) {
+            console.log('Deberia mandarte una alerta ')
             // Registro exitoso
             Swal.fire('¡Registro exitoso!', '', 'success').then(() => {
               // Redireccionar a la página de login después de hacer clic en el botón "OK"
-              window.location.href = '/login';
+              window.location.href = '/empleados';
             });
           }else if (response.statusCode === 409) {
             // Error en los datos ingresados
@@ -92,12 +96,6 @@ export class RegistroComponent {
       );
     }
   }
-  scrollEspecifico(){
-    setTimeout(() => {
-    window.location.reload();
   
-  }, 50);
-  
-}
   
 }

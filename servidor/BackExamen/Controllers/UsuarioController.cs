@@ -28,6 +28,13 @@ namespace BackExamen.Controllers
         }
 
 
+        [HttpPost]
+        [Route("RegistrarEmpleado")]
+        public dynamic RegistrarEm([FromBody] Usuario usuario)
+        {
+            return RegistrarseData.RegistraEmpleado(usuario);
+
+        }
 
         [HttpPost]
         [Route("Registrase")]

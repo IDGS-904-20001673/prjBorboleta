@@ -37,6 +37,14 @@
                 </div>
             </div>
         </li>
+
+        <li class="nav-item"  *ngIf="idRole === 1" >
+            <a class="nav-link" routerLink="/empleados">
+                <i class="fas fa-shopping-basket"></i>
+              <span>Empleados</span>
+            </a>
+        </li>
+
      
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMateriaPrima"
