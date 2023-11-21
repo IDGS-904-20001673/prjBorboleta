@@ -85,11 +85,12 @@
                 <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
                     aria-expanded="true" aria-controls="collapseCardExample">
                     <h6 class="m-0 font-weight-bold text-primary">
-                        Materia Prima
+                    Empleados
                     </h6>
                 </a>
                 <div class="collapse show" id="collapseCardExample">
                     <div class="card-body">
+                        <input type="text" [(ngModel)]="filtro" (input)="filtrarEmpleados()" placeholder="Buscar..." class="form-control mb-3">
                         <table class="table table-bordered table-striped">
                             <thead class="thead-dark">
                                 <tr>
@@ -102,24 +103,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- <tr *ngFor="let matPrimaP of matPrimaP">
+                                <tr *ngFor="let empleado of empleadosFiltrados">
+                                    <td>{{empleado.nombre}}</td>
+                                    <td>{{empleado.correo}}</td>
+                                    <td>{{empleado.contrasenia}}</td>
+                                    <td>{{empleado.domicilio.codigoPostal}}</td>
+                                    <td>{{empleado.domicilio.referencia}}</td>
                                     <td>
-                                        <img [src]="dataURLtoImage(matPrimaP.image_name)" alt="Imagen" width="50" height="50">
-                                    </td>
-                                    <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">{{
-                                        matPrimaP.nombreMateriaPrima }}</td>
-                                    <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">{{
-                                        matPrimaP.cantidadTotal }}</td>
-                                    <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">${{
-                                        matPrimaP.costo }}</td>
-                                    <td>
-                                        <button class="btn btn-success" (click)="toggleDiv(matPrimaP)">
+                                        <button class="btn btn-success" >
                                             <i class="fas fa-plus-circle"></i>
                                         </button>
                                     </td>
-                                </tr> -->
+                                </tr>
                             </tbody>
                         </table>
+                        <div *ngIf="Empleado.length === 0">
+                            <p>No se tienen Datos.</p>
+                          </div>
                     </div>
                 </div>
             </div>

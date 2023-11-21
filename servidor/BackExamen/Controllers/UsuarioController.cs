@@ -60,11 +60,14 @@ namespace BackExamen.Controllers
             
             
                 return LoginData.consultarDomicilio(id);
-         
-
-
         }
+        [HttpPost]
+        [Route("MostrarEmpleados")]
+        public dynamic ProveedoresInAct()
+        {
 
+            return RegistrarseData.mostrarEmpleadosCompletos();
+        }
 
 
     }

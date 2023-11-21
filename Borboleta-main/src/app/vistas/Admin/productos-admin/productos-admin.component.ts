@@ -20,7 +20,7 @@ export class ProductosAdminComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerProductosActivos();
     this.obtenerProductosInActivos();
-    this.productosFiltrados = this.productos; 
+    // this.productosFiltrados = this.productos; 
     this.obtenerMateriaPrima();
     // this.obtenerMateriaPrimaPuntos();
   }
@@ -71,10 +71,6 @@ export class ProductosAdminComponent implements OnInit {
       matPrimaItem.nombreMateriaPrima.toLowerCase().includes(this.materiaPrimaInput.toLowerCase())
     );
   }
-  
-
-
-  
   onImageSelected(event: any): void {
     if (event.target.files && event.target.files.length > 0) {
       const selectedFile = event.target.files[0];
@@ -84,21 +80,10 @@ export class ProductosAdminComponent implements OnInit {
       }
     }
   }
-
-
   materiaPrimaControl = new FormControl();
   onMateriaPrimaSelected(event: any) {
     this.selectedMateriaPrima = event.option.value;
   }
-  
-
-
-
-
-
-
-
-  
   onRegisterProducto(): void {
     const dataNuevoProducto = {
       nombre: this.nombre,
@@ -307,11 +292,6 @@ export class ProductosAdminComponent implements OnInit {
 
   }
 
-
-
-
-
-
   getMateriaPrimaNombre(materiaPrimaId: number): string {
     const materiaPrima = this.matPrima.find(matPrima => matPrima.materiaPrimaId === materiaPrimaId);
     return materiaPrima ? materiaPrima.nombreMateriaPrima : '';
@@ -375,7 +355,6 @@ export class ProductosAdminComponent implements OnInit {
       (data) => {
         this.productos = data;
         this.productosFiltrados = data;
-        console.log(data);
       },
       (error) => {
         console.error('Error al obtener los proveedores', error);
@@ -387,7 +366,8 @@ export class ProductosAdminComponent implements OnInit {
     if (this.filtro) {
       this.productosFiltrados = this.productos.filter((producto) => {
         return (
-          producto.nombre.toLowerCase().includes(this.filtro.toLowerCase()) ||
+          producto.image_name.toString().includes(this.filtro.toString())||
+          producto.nombre.toString().includes(this.filtro.toString()) ||
           producto.precio.toString().includes(this.filtro) ||
           producto.descripccion.toLowerCase().includes(this.filtro.toLowerCase())
         );
@@ -396,10 +376,10 @@ export class ProductosAdminComponent implements OnInit {
       this.productosFiltrados = [...this.productos];
     }
   
-    // if (this.filtro === '') {
-    //   // Si el campo de búsqueda está vacío, recargar la página
-    //   window.location.reload();
-    // }
+    if (this.filtro === '') {
+      // Si el campo de búsqueda está vacío, recargar la página
+      window.location.reload();
+    }
   }
   
   obtenerProductosInActivos(): void {

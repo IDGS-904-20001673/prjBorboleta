@@ -8,6 +8,24 @@ export interface EstadoMunicipio {
   municipios: string[];
 }
 
+export interface Empleado {
+  idUsuario: number;
+  nombre: string;
+  correo:string;
+  contrasenia: string;
+  idRole: number;
+  domicilio: {
+    estado: string;
+    municipio: string;
+    codigoPostal: number;
+    colonia: string;
+    calle: string;
+    numeroExt: number;
+    numeroInt: number;
+    referencia: string;
+  }
+}
+
 export interface Proveedor {
     idProveedor: number;
     nombre: string;
@@ -73,6 +91,7 @@ export interface agregarMateriaPrima {
   materiaPrimaId: number;
   provedoresId: number;
   nombreMateriaPrima: string;
+  unidadMedida:string;
   cantidadTotal: number;
   costo: number;
   image_name: string;
@@ -102,6 +121,7 @@ export interface comprasMP {
     materiaPrimaId: number;
     provedoresId: number;
     nombreMateriaPrima: string;
+    unidadMedida:string;
     cantidadTotal: number;
     costo: number;
     image_name: string;

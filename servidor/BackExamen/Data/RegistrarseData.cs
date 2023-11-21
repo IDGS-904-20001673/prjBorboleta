@@ -252,6 +252,84 @@ namespace tenis.Data
                 }
             }
         }
+        public static dynamic mostrarEmpleadosCompletos()
+        {
+
+            List<UsuarioID> prove = new List<UsuarioID>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaCon))
+            {
+
+                try
+                {
+                    oConexion.Open();
+
+                    SqlCommand cmd = new SqlCommand("sp_mostrarEmpleados", oConexion);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            UsuarioID us = new UsuarioID()
+                            {
+                                IdUsuario = Convert.ToInt32(dr["idUsuario"]),
+                                Nombre = dr["nombre"].ToString(),
+                                Correo = dr["correo"].ToString(),
+                                Contrasenia = dr["contrasenia"].ToString(),
+                                IdRole = Convert.ToInt32(dr["idRole"]),
+                                Domicilio = new Domicilio()
+                                {
+                                    Estado = dr["estado"].ToString(),
+                                    Municipio = dr["municipio"].ToString(),
+                                    CodigoPostal = Convert.ToInt32(dr["codigoPostal"]),
+                                    Colonia = dr["colonia"].ToString(),
+                                    Calle = dr["calle"].ToString(),
+                                    NumeroExt = Convert.ToInt32(dr["numeroExt"]),
+                                    NumeroInt = dr.IsDBNull(dr.GetOrdinal("numeroInt")) ? (int?)null : dr.GetInt32(dr.GetOrdinal("numeroInt")),
+                                    Referencia = dr["referencia"].ToString(),
+                                },
+
+                            };
+
+                            prove.Add(us);
+                        }
+                    }
+
+                    if (prove.Count > 0)
+                    {
+                        return prove;
+                    }
+                    else
+                    {
+                        return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                        {
+                            Content = new StringContent("Error en la consulta de provedores")
+                        };
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error: {e.Message}");
+                    Console.WriteLine($"StackTrace: {e.StackTrace}");
+
+                    return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                    {
+                        Content = new StringContent("Error al consultar los proveedores. Ponte en contacto con el guapo.")
+                    };
+                }
+
+                finally
+                {
+                    oConexion.Close();
+                }
+            }
+        }
 
     }
+
+
+
+
 }

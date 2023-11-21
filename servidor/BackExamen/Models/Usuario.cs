@@ -9,6 +9,8 @@
         public Domicilio? Domicilio { get; set; }
     }
 
+
+
     public class UsuarioID
     {
         public int IdUsuario { get; set; }

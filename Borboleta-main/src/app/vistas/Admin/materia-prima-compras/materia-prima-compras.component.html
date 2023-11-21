@@ -71,7 +71,8 @@
                             <tr>
                                 <th>Imagen</th>
                                 <th>Nombre</th>
-                                <th>Existencia (Unidades o metros)</th>
+                                <th>Existencia</th>
+                                <th>UnidadMedida o Piezas</th>
                                 <th>Costo $MXN (Unidades o metros)</th>
                                 <th>Acciones</th>
                             </tr>
@@ -85,6 +86,8 @@
                                     matPrimaP.nombreMateriaPrima }}</td>
                                 <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">{{
                                     matPrimaP.cantidadTotal }}</td>
+                                <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">{{
+                                        matPrimaP.unidadMedida }}</td>
                                 <td [ngClass]="{'text-danger': isCantidadMenorCincuenta(matPrimaP.cantidadTotal)}">${{
                                     matPrimaP.costo }}</td>
                                 <td>

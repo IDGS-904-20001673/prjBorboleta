@@ -219,9 +219,6 @@ export class MateriaPrimaComprasComponent implements OnInit{
       }
     });
   }
-
-
-
   onRegisterMateriaPrima(): void{
     if (!this.isFormValid()) {
       Swal.fire('Formulario incompleto', 'llena todos los campos para continuar', 'error');
@@ -264,7 +261,6 @@ export class MateriaPrimaComprasComponent implements OnInit{
       }
     });
   }
-
   onCompraMateriaPrima(): void{
     if (!this.isFormValidCompra()) {
       Swal.fire('Formulario incompleto', 'llena todos los campos para continuar', 'error');

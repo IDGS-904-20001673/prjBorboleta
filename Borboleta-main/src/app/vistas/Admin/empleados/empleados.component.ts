@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProyectoApiService } from '../../../proyecto-api.service';
 import Swal from 'sweetalert2';
+import { Empleado } from '../../../models/modelo-general.model';
 import { Router } from '@angular/router';
 
 
@@ -11,7 +12,16 @@ import { Router } from '@angular/router';
 })
 
 export class EmpleadosComponent {
+  constructor(private proyectoApiService: ProyectoApiService) {
+    this.Empleado = [];
+   }
 
+   ngOnInit(): void {
+    this.obtenerEmpleados();
+  }
+  Empleado: Empleado[] = [];
+  empleadosFiltrados: Empleado[] = [];
+  filtro :string = '' 
   nombre: string = '';
   correo: string = '';
   contrasenia: string = '';
@@ -35,7 +45,43 @@ export class EmpleadosComponent {
       !!this.codigoPostal && !!this.colonia && !!this.calle && !!this.numeroExt && !!this.referencia;
   }
 
-  constructor(private proyectoApiService: ProyectoApiService) { }
+  obtenerEmpleados(): void {
+    this.proyectoApiService.getAllEmpleados().subscribe(
+      (data) => {
+        this.Empleado = data;
+        this.empleadosFiltrados=data;
+        console.log(data);
+      },
+      (error) => {
+        console.error('Error al obtener los Empleados', error);
+      }
+    );
+  }
+  filtrarEmpleados():void{
+    if(this.filtro){
+      this.empleadosFiltrados = this.Empleado.filter((empleado) =>{
+        return(
+          empleado.nombre.toLowerCase().includes(this.filtro.toLowerCase())||
+          empleado.correo.toLowerCase().includes(this.filtro.toLowerCase())||
+          empleado.contrasenia.toString().includes(this.filtro.toLowerCase())||
+          empleado.domicilio.codigoPostal.toString().includes(this.filtro.toLowerCase())||
+          empleado.domicilio.referencia.toString().includes(this.filtro.toLowerCase())
+
+       
+          
+        );
+      });
+
+    }else{
+      this.empleadosFiltrados=[...this.Empleado];
+    }
+
+    
+  }
+
+
+ 
+
   onRegisterEmpleado(): void {    
       console.log('Función onRegister llamada');
 
@@ -98,4 +144,4 @@ export class EmpleadosComponent {
   }
   
   
-}
+} 

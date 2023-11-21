@@ -6,6 +6,8 @@ namespace tenis.Models
     {
         public int provedoresId { get; set; }
         public string? nombreMateriaPrima { get; set; }
+        public string? unidadMedida { get; set; }
+
         public double costo { get; set; }
         public string? image_name { get; set; }
     }
@@ -16,6 +18,8 @@ namespace tenis.Models
 
         public int provedoresId { get; set; }
         public string? nombreMateriaPrima { get; set; }
+        public string? unidadMedida { get; set; }
+
         public int cantidadTotal { get; set; }
 
         public double costo { get; set; }
@@ -27,7 +31,9 @@ namespace tenis.Models
         public int compraMateriaPrimaId { get; set; }
 
         public int materiaPrimaId { get; set; }
+
         public int cantidadCompra { get; set; }
+
 
         public double pagoTotal { get; set; }
         public string fecha { get; set; }

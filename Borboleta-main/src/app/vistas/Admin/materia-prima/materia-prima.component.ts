@@ -21,6 +21,7 @@ export class MateriaPrimaComponent implements OnInit {
   matPrimaP: materiaPrimaPuntos[] = [];
   selectedProveedor: number = 0;
   nombre: string = '';
+  unidadMedida: string='';
   costo: number | null = null;
   image_name: string = '';
   selectedImage: File | null = null;
@@ -30,6 +31,7 @@ export class MateriaPrimaComponent implements OnInit {
   cantidadCompra: number | null = null;
   selectedMatPrima: materiaPrima | null = null;
   nombreMP: string = '';
+  unidadMedidaMP:string=';'
   costoMP: number | null = null;
   puntoMP: string = '';
   selectedProveedorinMP: number = 0;
@@ -229,6 +231,7 @@ export class MateriaPrimaComponent implements OnInit {
         const data = {
           provedoresId: this.selectedProveedor,
           nombreMateriaPrima: this.nombre,
+          unidadMedida : this.unidadMedida,
           costo: this.costo,
           image_name: base64Image
         };
@@ -322,13 +325,13 @@ export class MateriaPrimaComponent implements OnInit {
       return;
     }
     const selectedNombre = this.selectedMatPrima?.nombreMateriaPrima || ""; 
-  
     if (/\d/.test(selectedNombre)) {
       const numerosEnNombre = selectedNombre.match(/\d+/g);
       const punto = numerosEnNombre?.join(""); // Une los dígitos numéricos en un solo número
       const data = {
         materiaPrimaId: this.selectedMatPrima?.materiaPrimaId,
         cantidadCompra: this.cantidadCompra,
+        unidadMedida:this.unidadMedida,
         pagoTotal: this.pagoTotal,
         punto: punto // Agrega el campo "punto" al objeto data
       };

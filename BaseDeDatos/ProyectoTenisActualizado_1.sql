@@ -1,3 +1,4 @@
+﻿
 use master;
 GO
 DROP DATABASE IF EXISTS tenis;
@@ -302,14 +303,15 @@ GO
 CREATE PROCEDURE sp_Nueva_materiaPrima(
     @proovedoresId int,
     @nombreMateriaPrima varchar(255),
+	@unidadMedida varchar(255),
     @costo float,
     @image_name varchar(MAX)
 )
 AS   
 BEGIN
 
-        INSERT INTO materiaPrima (proovedoresId, nombreMateriaPrima, cantidadTotal, costo, image_name)
-        VALUES (@proovedoresId, @nombreMateriaPrima, 0, @costo, @image_name);
+        INSERT INTO materiaPrima (proovedoresId, nombreMateriaPrima,unidadMedida, cantidadTotal, costo, image_name)
+        VALUES (@proovedoresId, @nombreMateriaPrima,@unidadMedida, 0, @costo, @image_name);
 END;
 GO
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -750,12 +752,14 @@ GO
 EXEC sp_nueva_materiaPrima
     @proovedoresId = 1,
     @nombreMateriaPrima = 'PVC',
+	@unidadMedida ='Gramos', 
     @costo = 517.20,
 	@image_name = ''
 GO
 EXEC sp_nueva_materiaPrima
     @proovedoresId = 1,
     @nombreMateriaPrima = 'Suela del 2',
+	@unidadMedida = '2',
     @costo = 52.20,
 	@image_name = ''
 GO

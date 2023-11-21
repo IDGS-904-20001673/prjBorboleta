@@ -58,6 +58,7 @@ namespace tenis.Data
 
                         cmd.Parameters.Add(new SqlParameter("@proovedoresId", System.Data.SqlDbType.Int)).Value = MP.provedoresId;
                         cmd.Parameters.Add(new SqlParameter("@nombreMateriaPrima", System.Data.SqlDbType.VarChar)).Value = MP.nombreMateriaPrima;
+                        cmd.Parameters.Add(new SqlParameter("@unidadMedida", System.Data.SqlDbType.VarChar)).Value = MP.unidadMedida;
                         cmd.Parameters.Add(new SqlParameter("@costo", System.Data.SqlDbType.Float)).Value = MP.costo; 
                         cmd.Parameters.Add(new SqlParameter("@image_name", System.Data.SqlDbType.VarChar)).Value = MP.image_name;
 
@@ -123,6 +124,7 @@ namespace tenis.Data
                                 materiaPrimaId =Convert.ToInt32(dr["materiaPrimaId"]),
                                 provedoresId=Convert.ToInt32(dr["proovedoresId"]),
                                 nombreMateriaPrima = dr["nombreMateriaPrima"].ToString(),
+                                unidadMedida = dr["unidadMedida"].ToString(),
                                 cantidadTotal = Convert.ToInt32(dr["cantidadTotal"]),
                                 costo = Convert.ToDouble(dr["costo"]),
                                 image_name = dr["image_name"].ToString()
@@ -185,6 +187,7 @@ namespace tenis.Data
                                 materiaPrimaId =Convert.ToInt32(dr["materiaPrimaId"]),
                                 provedoresId=Convert.ToInt32(dr["proovedoresId"]),
                                 nombreMateriaPrima = dr["nombreMateriaPrima"].ToString(),
+                                unidadMedida = dr["unidadMedida"].ToString(),
                                 cantidadTotal = Convert.ToInt32(dr["cantidadTotal"]),
                                 costo = Convert.ToDouble(dr["costo"]),
                                 image_name = dr["image_name"].ToString()
@@ -255,6 +258,7 @@ namespace tenis.Data
                                     materiaPrimaId =Convert.ToInt32(dr["materiaPrimaId"]),
                                     provedoresId=Convert.ToInt32(dr["proovedoresId"]),
                                     nombreMateriaPrima = dr["nombreMateriaPrima"].ToString(),
+                                    unidadMedida = dr["unidadMedida"].ToString(),
                                     cantidadTotal = Convert.ToInt32(dr["cantidadTotal"]),
                                     costo = Convert.ToDouble(dr["costo"]),
                                     image_name = dr["image_name"].ToString()

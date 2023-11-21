@@ -100,6 +100,7 @@ namespace tenis.Data
                                 materiaPrimaId =Convert.ToInt32(dr["materiaPrimaId"]),
                                 provedoresId=Convert.ToInt32(dr["proovedoresId"]),
                                 nombreMateriaPrima = dr["nombreMateriaPrima"].ToString(),
+                                unidadMedida= dr["unidadMedida"].ToString(),
                                 cantidadTotal = Convert.ToInt32(dr["cantidadTotal"]),
                                 costo = Convert.ToDouble(dr["costo"]),
                                 image_name = dr["image_name"].ToString()

@@ -22,7 +22,7 @@ namespace tenis.Controllers
             return MateriaPrimaData.MostarTodaMateriaPrima();
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("MostrarMateriaPrimaNormal")]
         public dynamic MostrarMateriaNormal()
         {

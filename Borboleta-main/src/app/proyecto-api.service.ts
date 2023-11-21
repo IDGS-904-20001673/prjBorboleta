@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Proveedor } from './models/modelo-general.model';
 import { ProveedorInAct } from './models/modelo-general.model';
+import { Empleado } from './models/modelo-general.model';
 import { materiaPrima } from './models/modelo-general.model';
 import { materiaPrimaPuntos } from './models/modelo-general.model';
 import { comprasMP } from './models/modelo-general.model';
@@ -10,6 +11,7 @@ import { agregarMateriaPrima } from './models/modelo-general.model';
 import { productos } from './models/modelo-general.model';
 import { domicilio } from './models/modelo-general.model'
 import { MateriaPrimaDetalle } from './models/modelo-general.model';
+import { tap, catchError } from 'rxjs/operators';
 
 
 
@@ -22,12 +24,13 @@ export class ProyectoApiService {
   constructor(private http: HttpClient) { }
   
   /* ---------------------------------------------------------------------LOGIN--------------------------------------------------------*/
-  private  urlPadre = 'http://10.16.14.121:7109/tenis'
+  private  urlPadre = 'http://192.168.1.5:7109/tenis'
   private apiUrlLogin = this.urlPadre + '/login';
   private apiUrlRegistro = this.urlPadre + '/Registrase'; 
   private apiUrlRegistroEmpleado = this.urlPadre + '/RegistrarEmpleado'; 
-  private apiUrlDomicilio = this.urlPadre + '/ConsultarDomicilioPorIdUsuario'
+  private apiUrlDomicilio = this.urlPadre + '/ConsultarDomicilioPorIdUsuario';
   private apiUrlUpdateDomicilio = this.urlPadre + '/ActualizarUsuario';
+  private apiUrlMostrarEmpleados = this.urlPadre +'/MostrarEmpleados';
   
 
   login(email: string, password: string): Observable<any> {
@@ -58,11 +61,26 @@ export class ProyectoApiService {
       'Content-Type': 'application/json'
     });
     // Realizar la solicitud HTTP POST con los datos en el cuerpo
-    return this.http.post<any>(`${this.apiUrlRegistroEmpleado}`, data, { headers: headers });
+    return this.http.post<any>(`${this.apiUrlRegistroEmpleado}`, data, { headers: headers }); 
   }
 
 
-
+  getAllEmpleados(): Observable<Empleado[]> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+  
+    // Realizar la solicitud HTTP POST vacía, ya que no se requiere enviar datos en el cuerpo
+    return this.http.post<Empleado[]>(this.apiUrlMostrarEmpleados, {}, { headers: headers })
+      .pipe(
+        tap(data => console.log('Datos recibidos:', data)),
+        catchError(error => {
+          console.error('Error al obtener empleados:', error);
+          throw error;
+        })
+      );
+  }
+  
 
   getDomiciliobyId(data: any): Observable<domicilio[]> {
     console.log('esto lleva data de la api',data)
@@ -219,6 +237,8 @@ export class ProyectoApiService {
   private apiUrlIdProductoDetalle =this.urlPadre +  '/MostrarDetalleProductoPorId';
   private apiUrlRegistrarMateriaPrimaProducto =this.urlPadre +  '/RegistrarDetalleMateriaProductoPuntos';
   private apiUrlHacerProducto =this.urlPadre +  '/HacerProductos';
+  
+  
   getAllProductosActivos(): Observable<productos[]> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'

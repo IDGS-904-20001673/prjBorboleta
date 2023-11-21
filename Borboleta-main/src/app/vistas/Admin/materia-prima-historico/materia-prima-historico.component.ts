@@ -38,9 +38,11 @@ export class MateriaPrimaHistoricoComponent implements OnInit {
       this.productosFiltrados = this.compras.filter((compras) =>{
         return(
           compras.materiaPrima.nombreMateriaPrima.toLowerCase().includes(this.filtro.toLowerCase())||
+          compras.materiaPrima.unidadMedida.toLowerCase().includes(this.filtro.toLowerCase())||
           compras.cantidadCompra.toString().includes(this.filtro) ||
           compras.pagoTotal.toString().includes(this.filtro) ||
           compras.fecha.toString().includes(this.filtro) 
+          
         );
       });
 
@@ -48,10 +50,7 @@ export class MateriaPrimaHistoricoComponent implements OnInit {
       this.productosFiltrados=[...this.compras];
     }
 
-    if (this.filtro === '') {
-      // Si el campo de búsqueda está vacío, recargar la página
-      window.location.reload();
-    }
+    
   }
 
 

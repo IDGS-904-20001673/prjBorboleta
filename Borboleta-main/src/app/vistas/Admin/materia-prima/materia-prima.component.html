@@ -16,6 +16,17 @@
                   placeholder="Nombre Materia de la Prima" oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')" />
               </div>
               <div class="form-group col-md-4">
+                <label for="unidadMedida">Unidad de Medida:</label>
+                <select class="form-control" id="unidadMedida" [(ngModel)]="unidadMedida" name="unidadMedida">
+                    <option value="metros">Metros</option>
+                    <option value="litros">Litros</option>
+                    <option value="mililitros">Mililitros</option>
+                    <option value="centimetros">Centímetros</option>
+                    <option value="centimetros">Kilogramos</option>
+                    <option value="centimetros">Gramos</option>
+                </select>
+            </div>
+              <div class="form-group col-md-4">
                 <label for="telPro">Costo de la materia prima:($MXN)</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -70,6 +81,15 @@
                     <input type="text" class="form-control" id="nombreMP" [(ngModel)]="nombreMP" name="nombreMP"
                       placeholder="Nombre Materia de la Prima"  oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '')"/>
                   </div>
+                  <div class="form-group col-md-4">
+                    <label for="unidadMedida">Cantidad:</label>
+                    <select class="form-control" id="unidadMedida" [(ngModel)]="unidadMedida" name="unidadMedida">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
                   <div class="form-group col-md-4">
                     <label for="nombrePro">Punto (MX):</label>
                     <input type="text" class="form-control" id="punto" [(ngModel)]="puntoMP" name="punto"
